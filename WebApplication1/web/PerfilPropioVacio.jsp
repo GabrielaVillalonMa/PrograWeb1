@@ -463,8 +463,8 @@
         </div>
 
 
-        <!-- SIDEBAR RIGHT -->
-        <div class="col-md-2" style="position: relative">
+          <!-- SIDEBAR RIGHT -->
+         <div class="col-md-2" style="position: relative">
             <br />
             <div class="row">
                 <div class="sidenav-right">
@@ -474,25 +474,31 @@
                             <!-- INFO ACTUAL -->
                             <aside class="col-md-12 blog-sidebar">
                                 <div class="p-3 mb-3 bg-light rounded">
-                                    <form action="PerfilPropioVacio.jsp" method="get">
-
-                                        <img src="" class="round_img" c lass="a_center" alt="Profile Picture" width="30" height="30">
+                                    
+                                    <form action="PerfilPropioVacio.jsp">
+                                        <img src="" class="round_img" c lass="a_center" alt="Profile Picture" width="30" height="30" >
                                         <button class="btn"> Perfil </button>
-
-
                                     </form>
-                                    <h6 class="font-italic"><b>Información Actual del usuario</b></h6>
+                                    
+                                    <form action="PerfilEditVacio.jsp" method="get">
+
+                                        
+                                    
+                                        <h6 class="font-italic"><b>Información Actual del usuario</b></h6>
                                     <p class="firstName" class="lastName">Nombre: <em>Nombre Apellido</em> </p>
                                     <p class="username">Username: <em>username</em> </p>
                                     <p class="email" id="email">Email: <em>you@example.com</em> </p>
 
-                                    <div class="btn-group">
-                                        <button class="btn btn-primary btn-sm btn-block" type="submit" action="PerfilEditVacio.jsp">Editar Perfil</button>
+                                    <div class="btn-group" >
+                                        <button class="btn btn-primary btn-sm btn-block" type="submit">Editar Perfil</button>
                                         <!-- <form>
                                         <input type="image" src="imagenes/camera_button.png" alt="Submit" width="48" height="48">
                                         <input type="text" alt="Submit">
                                         </form> -->
                                     </div>
+
+                                    </form>
+                                    
 
                             </aside><!-- /.blog-sidebar -->
 
@@ -593,4 +599,3 @@
     </script>
 </body>
 </html>
-
