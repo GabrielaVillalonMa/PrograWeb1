@@ -226,7 +226,7 @@
 
   <header>
     <nav class="navbar sticky-top  flex-md-nowrap p-0">
-        <form action="CheckUser" method="get">
+        <form>
             <button class="btn">
                 <img class="mb-8" src="imagenes/minbit_logo4.png" alt="" width="72" height="72">
                 <!-- <a class="navbar-brand text-white" href="#">MinBit</a> -->
@@ -240,7 +240,7 @@
                 <a class="nav-link disabled" href="#">Sign-in</a>
               </li> -->
             </ul>
-            <form class="form-signin mt-2 mt-md-0 container-eft" action="CheckUser" method="POST">
+           <form class="form-signin mt-2 mt-md-0 container-eft" action="CheckUser" method="POST">
               <div class="row">
                 <div class="col-md-2">
                  

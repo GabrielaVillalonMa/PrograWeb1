@@ -364,7 +364,7 @@
                                     
                     <div class="row">
                         <div style="">
-                            <img src="" class="round_img" alt="Profile Picture" width="200" height="200">
+                            <img src="data:image/jpeg;base64, <%= session.getAttribute("ImageData") %>"class="round_img" alt="Profile Picture" width="200" height="200">
                         </div>
                         <div>
                             <h1 class="display-4 font-italic">Nombre de Usuario </h1>

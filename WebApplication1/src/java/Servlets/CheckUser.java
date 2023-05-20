@@ -4,8 +4,8 @@
  */
 package Servlets;
 
-import com.mysql.cj.PreparedQuery;
-import com.mysql.cj.xdevapi.Statement;
+
+
 
 import java.sql.*;
 import java.io.IOException;
@@ -14,8 +14,10 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.Base64;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -33,6 +35,8 @@ public class CheckUser extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.lang.ClassNotFoundException
+     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
@@ -44,17 +48,32 @@ public class CheckUser extends HttpServlet {
               Class.forName("com.mysql.jdbc.Driver");
 
             // Establecemos la conexión con la base de datos
-            Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "root", "lolcats23");
+            Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "root", "Maag201200.");
         
               PreparedStatement stm = conexion.prepareStatement("Select * from tbl_user WHERE `Correo`='"+CorreoInput +"' and `PassWord` ='"+PasswordInput +"'");
             ResultSet rs = stm.executeQuery();
             if (rs.next()) {
+                  SeshSet(request,rs); 
                 response.sendRedirect("DashVacio.jsp");
                 
+               
+                
+                
+                
             }else  {
-        out.println("<script type=\"text/javascript\">");  
+                stm = conexion.prepareStatement("Select * from tbl_user WHERE `UserName`='"+CorreoInput +"' and `PassWord` ='"+PasswordInput +"'");
+             rs = stm.executeQuery();
+
+                
+                if (rs.next()) {
+                      SeshSet(request,rs); 
+                      response.sendRedirect("DashVacio.jsp");
+                }else{ out.println("<script type=\"text/javascript\">");  
 out.println("alert('Algun dato a sido incorrecto');");  
-out.println("</script>");
+out.println("</script>");}
+                
+                
+       
 
             
             }
@@ -75,9 +94,7 @@ out.println("</script>");
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(CheckUser.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(CheckUser.class.getName()).log(Level.SEVERE, null, ex);
         }
         
@@ -100,9 +117,7 @@ out.println("</script>");
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(CheckUser.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(CheckUser.class.getName()).log(Level.SEVERE, null, ex);
         }
         
@@ -132,4 +147,27 @@ out.println("</script>");
         return "Short description";
     }// </editor-fold>
 
+    static void SeshSet(HttpServletRequest request, ResultSet rs) {
+   
+          HttpSession MySesh = request.getSession();
+        try { 
+            MySesh.setAttribute("User",rs.getString("UserName"));
+            MySesh.setAttribute("Nombre", rs.getString("Nombre"));
+              MySesh.setAttribute("Apellido", rs.getString("Apellido"));
+                MySesh.setAttribute("Correo", rs.getString("Correo"));
+                  MySesh.setAttribute("Password", rs.getString("PassWord"));
+                    MySesh.setAttribute("BirthDay", rs.getDate("DateBirth"));
+                    
+   
+                    
+                    
+           
+            byte[] imageData =  rs.getBytes("ProfPic");
+   String base64Image = Base64.getEncoder().encodeToString(imageData);
+              MySesh.setAttribute("ImageData", base64Image);  
+        } catch (SQLException ex) {
+            Logger.getLogger(CheckUser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  }
+    
 }

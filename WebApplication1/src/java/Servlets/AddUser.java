@@ -42,7 +42,7 @@ public class AddUser extends HttpServlet {
               Class.forName("com.mysql.jdbc.Driver");
 
             // Establecemos la conexión con la base de datos
-            Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "root", "lolcats23");
+            Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "root", "Maag201200.");
          String Name = request.getParameter("nombreRegist"); 
          String Apellido = request.getParameter("apellidoRegist");
          String Username= request.getParameter("usernameRegist");
@@ -60,22 +60,28 @@ public class AddUser extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
          
-              PreparedStatement stm = conexion.prepareStatement("Insert into tbl_status(`State`) VALUES ('1');");
-            stm.executeUpdate();
-        ResultSet rs =   stm.executeQuery("SELECT Id_Status FROM tbl_status ORDER BY `Id_Status` DESC ");
+            
+            
+            
+              PreparedStatement stm ;
+         
+            
+        
+        ResultSet rs ;
       
-        //out.println(rs);
-        int IDS=0;
-            if (rs.next()) {
-               IDS  = rs.getInt(1);
-    //   out.println(IDS);
-            }
+           
+                    
+     
         
      String Command = "Insert into tbl_user(`UserName`,`PassWord`,`Nombre`,`Apellido`,`Correo`, `DateBirth`,`DateRegist`,`ProfPic`,`Id_Status`)"
-                 + " values ('"+Username+"','"+Password1+"','"+Name+"','"+Apellido+"','"+Correo+"','"+DateBirth+"',Now(),"+Image1+","+IDS+");";
-  // out.println("<h1>"+Command+"</h1>");
+                 + " values ('"+Username+"','"+Password1+"','"+Name+"','"+Apellido+"','"+Correo+"','"+DateBirth+"',Now(),"+Image1+",2);";
+ // out.println(Command);
     stm= conexion.prepareStatement(Command);
           stm.executeUpdate();
+          
+          
+          
+        
        rs=stm.executeQuery("Select * from tbl_user WHERE `Correo`='"+Correo +"' and `PassWord` ='"+Password1 +"'");
         if (rs.next()) {
                

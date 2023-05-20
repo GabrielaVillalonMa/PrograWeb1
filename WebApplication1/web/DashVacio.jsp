@@ -357,6 +357,9 @@
             </div>
         </div>
 
+            
+            
+            
         <!-- MIDDLE -->
         <div class="col-md-8" >
             <div class="row">
@@ -377,14 +380,14 @@
                                              <form action="PerfilPropioVacio.jsp" method="get">
                                      
                                                     <button class="btn">
-                                                        <img src="" class="round_img" c lass="a_center" alt="Profile Picture" width="72" height="72">
+                                                        <img  src="data:image/jpeg;base64, <%= session.getAttribute("ImageData") %>"  class="round_img" c lass="a_center" alt="Profile Picture" width="72" height="72"  >
                                                     </button>
                                                 </form>
                                         </div>
 
                                         <div class="col-md-10">
-                                            <p class="card-text"><b>Nombre Apellido</b><br>
-                                            <small class="text">@username</small></p>
+                                            <p class="card-text"><b><%= session.getAttribute("Nombre")  %> <%= session.getAttribute("Apellido")  %> </b><br>
+                                            <small class="text"><%= session.getAttribute("User") %> </small></p>
                                             <div class="container">
                                             <div class="row justify-content-center">
                                                 <div class="btn-group">

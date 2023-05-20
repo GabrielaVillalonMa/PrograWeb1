@@ -416,11 +416,14 @@
                   <div class="container-card-md-10">
                 <main role="main" class="container">
                     <div class="row">
+                        
                         <div class="col-md-8 blog-main" style="width:100%">
                             <br>
                             <h3 class="pb-3 mb-4 font-italic border-bottom">
                                 Cambiar información personal
                             </h3>
+                            
+
                             <form class="needs-validation"  >
             
                                     <!-- Name -->
@@ -481,12 +484,25 @@
                                     
                                 </divst>
              
-                                <input class="btn btn-primary btn-sm btn-block" type="submit" value="Cambiar">
+                                <input class="btn btn-primary btn-sm btn-block" type="submit" value="Cambiar" action="PerfilPropioVacio.jsp">
+                                
                             </form>
+                            
+                            
+                            <div class="col-md-8 blog-main" style="width:100%">
+                            <form action="PerfilPropioVacio.jsp">
+                                <input class="btn btn-primary btn-sm btn-block" type="submit" value="Cancelar" >
+                            </form>
+                            </div>
+                                                    
+                            
+                        
              <br>
 
 
                         </div><!-- /.perfil-main -->
+                        
+
 
                     </div><!-- /.row -->
 
@@ -509,8 +525,8 @@
         </div>
 
 
-        <!-- SIDEBAR RIGHT -->
-        <div class="col-md-2" style="position: relative">
+         <!-- SIDEBAR RIGHT -->
+         <div class="col-md-2" style="position: relative">
             <br />
             <div class="row">
                 <div class="sidenav-right">
@@ -520,25 +536,31 @@
                             <!-- INFO ACTUAL -->
                             <aside class="col-md-12 blog-sidebar">
                                 <div class="p-3 mb-3 bg-light rounded">
-                                    <form action="PerfilPropio.jsp" method="get">
-
-                                        <img src="" class="round_img" c lass="a_center" alt="Profile Picture" width="30" height="30">
+                                    
+                                    <form action="PerfilPropioVacio.jsp">
+                                        <img src="" class="round_img" c lass="a_center" alt="Profile Picture" width="30" height="30" >
                                         <button class="btn"> Perfil </button>
-
-
                                     </form>
-                                    <h6 class="font-italic"><b>Información Actual del usuario</b></h6>
+                                    
+                                    <form action="PerfilEditVacio.jsp" method="get">
+
+                                        
+                                    
+                                        <h6 class="font-italic"><b>Información Actual del usuario</b></h6>
                                     <p class="firstName" class="lastName">Nombre: <em>Nombre Apellido</em> </p>
                                     <p class="username">Username: <em>username</em> </p>
                                     <p class="email" id="email">Email: <em>you@example.com</em> </p>
 
-                                    <div class="btn-group">
-                                        <button class="btn btn-primary btn-sm btn-block" type="submit" action="PerfilEditVacio.jsp">Editar Perfil</button>
+                                    <div class="btn-group" >
+                                        <button class="btn btn-primary btn-sm btn-block" type="submit">Editar Perfil</button>
                                         <!-- <form>
                                         <input type="image" src="imagenes/camera_button.png" alt="Submit" width="48" height="48">
                                         <input type="text" alt="Submit">
                                         </form> -->
                                     </div>
+
+                                    </form>
+                                    
 
                             </aside><!-- /.blog-sidebar -->
 
