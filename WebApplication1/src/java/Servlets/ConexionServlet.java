@@ -25,7 +25,7 @@ public class ConexionServlet extends HttpServlet {
             Class.forName("com.mysql.jdbc.Driver");
 
             // Establecemos la conexión con la base de datos
-            Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "root", "Maag201200.");
+            Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "root", "lolcats23");
 
             // Si la conexión fue exitosa, mostramos un mensaje en el navegador
         response.sendRedirect("dashboard2.html");

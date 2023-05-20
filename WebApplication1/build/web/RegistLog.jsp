@@ -223,7 +223,7 @@
   </head>
 
   
-
+<!-- Fixed navbar ================================================== -->
   <header>
     <nav class="navbar sticky-top  flex-md-nowrap p-0">
         <form>
@@ -280,8 +280,7 @@
 
       
       
-    <!-- Registration
-    ================================================== -->
+    <!-- Registration ================================================== -->
     <div class="container">
       <div class="py-5 text-center mx-auto mb-4">
          
@@ -366,6 +365,7 @@
               <div class="invalid-feedback">
                 Verificación de contraseña es obligatorio.
             </div>
+              
               <error id="alert"></error>
 
             </div>

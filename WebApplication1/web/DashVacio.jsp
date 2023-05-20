@@ -198,6 +198,16 @@
         color: #000000;
     }
     </style>   
+    
+<!--   <style>
+     [class*="col"]{
+         padding: 1rem;
+         background-color: #ffffff;
+         border: 2px solid #8da6ad;
+         color: #000000;
+     }
+     </style>    -->
+
 
   </head>
 
@@ -251,7 +261,7 @@
    
 
     <div class="row">
-              <!-- SIDEBAR LEFT -->
+          <!-- SIDEBAR LEFT -->
         <div class="col-md-2" style="position: relative; background-color: #E4E4E4;">
             <div class="row">
                 <div class="sidenav">
@@ -357,9 +367,7 @@
             </div>
         </div>
 
-            
-            
-            
+ 
         <!-- MIDDLE -->
         <div class="col-md-8" >
             <div class="row">
@@ -387,7 +395,7 @@
 
                                         <div class="col-md-10">
                                             <p class="card-text"><b><%= session.getAttribute("Nombre")  %> <%= session.getAttribute("Apellido")  %> </b><br>
-                                            <small class="text"><%= session.getAttribute("User") %> </small></p>
+                                            <small class="text">@<%= session.getAttribute("User") %> </small></p>
                                             <div class="container">
                                             <div class="row justify-content-center">
                                                 <div class="btn-group">
@@ -411,7 +419,7 @@
                                         <!-- <label for="comment">Comment:</label> -->
                                         <textarea class="form-control" rows="5" placeholder="Write a bit?" id="comment"></textarea>
                                     </div>
-                                    <button class="btn " type="submit">Publicar</button>
+                                    <button class="btn" type="submit">Publicar</button>
                                     <input type="file" id="myfile" name="myfile">
                                    
                                     </form>
@@ -429,19 +437,17 @@
                                     <div class="container-md align-items-center">
                                         <div class="row">
                                             <div class="col-sm-2">
-                                                <form action="PerfilPropioVacio" method="get" action="PerfilPropioVacio.jsp">
-
+                                                <form action="PerfilPropioVacio.jsp" method="get">
+                                     
                                                     <button class="btn">
-                                                        <img src="" class="round_img" c lass="a_center" alt="Profile Picture" width="72" height="72">
+                                                        <img  src="data:image/jpeg;base64, <%= session.getAttribute("ImageData") %>"  class="round_img" c lass="a_center" alt="Profile Picture" width="72" height="72"  >
                                                     </button>
                                                 </form>
                                             </div>
 
                                             <div class="col-md-10">
-                                                <p class="card-text">
-                                                    <b>Nombre Apellido</b><br>
-                                                    <small class="text">@username</small>
-                                                </p>
+                                                <p class="card-text"><b><%= session.getAttribute("Nombre")  %> <%= session.getAttribute("Apellido")  %> </b><br>
+                                            <small class="text">@<%= session.getAttribute("User") %> </small></p>
                                                 <div class="container">
                                                     <div class="row justify-content-center">
                                                         <div class="btn-group">
@@ -478,16 +484,16 @@
 
                                 <!--PAGINATION -->
                                 <nav class="blog-pagination center">
-                                    <a class="btn btn-outline-primary" href="#">1</a>
-                                    <a class="btn btn-outline-primary" href="#">2</a>
-                                    <a class="btn btn-outline-primary" href="#">3</a>
-                                    <a class="btn btn-outline-primary" href="#">4</a>
-                                    <a class="btn btn-outline-primary" href="#">5</a>
-                                    <a class="btn btn-outline-primary" href="#">6</a>
-                                    <a class="btn btn-outline-primary" href="#">7</a>
-                                    <a class="btn btn-outline-primary" href="#">8</a>
-                                    <a class="btn btn-outline-primary" href="#">9</a>
-                                    <a class="btn btn-outline-primary" href="#">10</a>
+                                    <button class="btn btn-outline-primary" href="#">1</button>
+                                    <button class="btn btn-outline-primary" href="#">2</button>
+                                    <button class="btn btn-outline-primary" href="#">3</button>
+                                    <button class="btn btn-outline-primary" href="#">4</button>
+                                    <button class="btn btn-outline-primary" href="#">5</button>
+                                    <button class="btn btn-outline-primary" href="#">6</button>
+                                    <button class="btn btn-outline-primary" href="#">7</button>
+                                    <button class="btn btn-outline-primary" href="#">8</button>
+                                    <button class="btn btn-outline-primary" href="#">9</button>
+                                    <button class="btn btn-outline-primary" href="#">10</button>
                                     
                                 </nav>
                             </div>
@@ -504,8 +510,8 @@
         </div>
 
 
-                <!-- SIDEBAR RIGHT -->
-         <div class="col-md-2" style="position: relative">
+          <!-- SIDEBAR RIGHT -->
+        <div class="col-md-2" style="position: relative">
             <br />
             <div class="row">
                 <div class="sidenav-right">
@@ -516,19 +522,40 @@
                             <aside class="col-md-12 blog-sidebar">
                                 <div class="p-3 mb-3 bg-light rounded">
                                     
-                                    <form action="PerfilPropioVacio.jsp">
-                                        <img src="" class="round_img" c lass="a_center" alt="Profile Picture" width="30" height="30" >
-                                        <button class="btn"> Perfil </button>
-                                    </form>
+                                   
+                                   
                                     
                                     <form action="PerfilEditVacio.jsp" method="get">
-
-                                        
                                     
-                                        <h6 class="font-italic"><b>Información Actual del usuario</b></h6>
-                                    <p class="firstName" class="lastName">Nombre: <em>Nombre Apellido</em> </p>
-                                    <p class="username">Username: <em>username</em> </p>
-                                    <p class="email" id="email">Email: <em>you@example.com</em> </p>
+                                  
+                                        
+                                    <div class="row">
+                                      
+                                                      
+                                        <div class="col-md-5">
+                                              <button class="btn">
+                                                        <img  src="data:image/jpeg;base64, <%= session.getAttribute("ImageData") %>"  class="round_img" class="a_center" alt="Profile Picture" 
+                                                              width="50" height="50">
+                                        </button>                     
+                                        </div>    
+                                        
+                                                              
+                                         <div class="col-md-7">
+                                              <p class="card-text"><b><%= session.getAttribute("Nombre")  %> <%= session.getAttribute("Apellido")  %> </b><br>
+                                            <small class="text">@<%= session.getAttribute("User") %> </small></p>             
+                                                               
+                                        </div>  
+                                          
+                                                
+                             
+                                        
+                                    </div>
+                                    <div class="row ">
+                                  
+                                    
+                                    <p class="card-text"><b>Nombre:</b> <br><em><%= session.getAttribute("Nombre")  %> <%= session.getAttribute("Apellido")  %></em> </p>
+                                    <p class="text"><b>Username:</b> <br><em>@<%= session.getAttribute("User") %></em> </p>
+                                    <p class="email" id="email"><b>Email:</b> <br><em><%= session.getAttribute("Correo") %></em> </p>
 
                                     <div class="btn-group" >
                                         <button class="btn btn-primary btn-sm btn-block" type="submit">Editar Perfil</button>
@@ -537,6 +564,12 @@
                                         <input type="text" alt="Submit">
                                         </form> -->
                                     </div>
+                                        
+                                    </div>
+                                    
+                                       
+                                        
+                                        
 
                                     </form>
                                     
@@ -557,7 +590,7 @@
         </main>
     </div>
 
-      
+      <!-- FOOTER -->
     <footer class="my-5 pt-5 text-muted text-center text-small">
         <p class="float-right">
             <a href="#">Back to top</a>
@@ -577,74 +610,96 @@
 
     
 
-    <!-- Bootstrap core JavaScript
+   <!-- Bootstrap core JavaScript
     ================================================== -->
-    
-
-    
     <!-- Placed at the end of the document so the pages load faster -->
-<!--     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"</script>
-   <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>-->
+    <script src="../../dist/js/bootstrap.min.js"></script>
 
      <!-- Validaciones fechas -->
       <script>
 
         
-//        document.getElementById('fechaANTES').max = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split("T")[0];
-//       
+        document.getElementById('fechaANTES').max = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split("T")[0];
        
-//       var today = new Date();
-//    var dd = String(today.getDate()).padStart(2, '0');
-//    var mm = String(today.getMonth() + 1).padStart(2, '0');
-//    var yyyy = today.getFullYear();
-//
-//    today = yyyy + '-' + mm + '-' + dd;
-//    $('#fechaDESP').attr('min',today);
+       
+       var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
+    var yyyy = today.getFullYear();
+
+    today = yyyy + '-' + mm + '-' + dd;
+    $('#fechaDESP').attr('min',today);
 
         </script>
     
+        <!-- Button color change -->
+      <script>
+        const btn = document.querySelector('btn btn-outline-primary');
+        
+        btn.addEventListener('click', ()=>){
+            btn.style.backgroundColor = '#ffac09';
+        }
 
+        </script>
+        
+<!--         Button color change 
+      <script>
+        const formulario = document.querySelector('#fotmulario');
+        //crear evento
+        formulario.addEventListener("submit".validarFormulario);
+        //mis funciones
+        function validarFormulario(e){
+            e.PreventDefault();
+            const nombre = document.querySelector("#nombre").value;
+            const username = document.querySelector("#username").value;
+        }
 
-  <!-- Album cards -->
-<!--    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"</script>
-//    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>');</script>
+        </script>-->
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+        feather.replace();
+    </script>
+
+    <!-- Album cards -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="../../assets/js/vendor/popper.min.js"></script>
     <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/vendor/holder.min.js"></script>-->
+    <script src="../../assets/js/vendor/holder.min.js"></script>
 
-<!--    <script>
-      var ctx = document.getElementById("myChart");
-      var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-          datasets: [{
-            data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
-            lineTension: 0,
-            backgroundColor: 'transparent',
-            borderColor: '#007bff',
-            borderWidth: 4,
-            pointBackgroundColor: '#007bff'
-          }]
-        },
-        options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: false
-              }
-            }]
-          },
-          legend: {
-            display: false,
-          }
-        }
-      });
-    </script>-->
-  </body>
+    <script>
+        var ctx = document.getElementById("myChart");
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                datasets: [{
+                    data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
+                    lineTension: 0,
+                    backgroundColor: 'transparent',
+                    borderColor: '#007bff',
+                    borderWidth: 4,
+                    pointBackgroundColor: '#007bff'
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: false
+                        }
+                    }]
+                },
+                legend: {
+                    display: false,
+                }
+            }
+        });
+    </script>
+</body>
 </html>
-
-

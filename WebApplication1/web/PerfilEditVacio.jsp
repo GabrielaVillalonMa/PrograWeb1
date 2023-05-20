@@ -197,6 +197,15 @@
         color: #000000;
     }
     </style>   
+    
+<!--      <style>
+     [class*="col"]{
+         padding: 1rem;
+         background-color: #ffffff;
+         border: 2px solid #8da6ad;
+         color: #000000;
+     }
+     </style>    -->
 
 </head>
 
@@ -361,11 +370,11 @@
                                     
                     <div class="row">
                         <div style="">
-                            <img src="" class="round_img" alt="Profile Picture" width="200" height="200">
+                            <img  src="data:image/jpeg;base64, <%= session.getAttribute("ImageData") %>"  class="round_img" c lass="a_center" alt="Profile Picture" width="72" height="72"  >
                         </div>
                         <div>
-                            <h1 class="display-4 font-italic">Nombre de Usuario </h1>
-                            <small class="text">@username</small>
+                              <p><h1 class="display-4 font-italic"><b><%= session.getAttribute("Nombre")  %> <%= session.getAttribute("Apellido")  %> </b> </h1><p>
+                             <p><small class="text">@<%= session.getAttribute("User") %> </small></p>
 
                             <div class="form-group">
                                         <!-- <label for="comment">Comment:</label> -->
@@ -425,19 +434,20 @@
                             
 
                             <form class="needs-validation"  >
-            
+                                
                                     <!-- Name -->
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                       <label for="nombreInicioSes">Nombre(s)</label>
-                                      <input type="text" class="form-control" id="nombreInicioSes" name="nombreRegist" placeholder="" value="" required>
+                                      <input type="text" class="form-control" id="nombreInicioSes" name="nombreRegist" 
+                                             placeholder="" value="<%= session.getAttribute("Nombre")%>" required>
                                       <div class="invalid-feedback">
                                         Nombre(s) son obligatorios.
                                     </div>
                                     </div>
                                     <div class="col-md-6 mb-3">
                                       <label for="apellidoInicioSes">Apellido(s)</label>
-                                      <input type="text" class="form-control" id="apellidoInicioSes" name="apellidoRegist" placeholder="" value="" required>
+                                      <input type="text" class="form-control" id="apellidoInicioSes" name="apellidoRegist" placeholder="" value="<%= session.getAttribute("Apellido")%>" required>
                                       <div class="invalid-feedback">
                                           Apellidos son obligatorios.
                                       </div>
@@ -451,7 +461,7 @@
                                     <div class="input-group-prepend">
                                       <span class="input-group-text">@</span>
                                     </div>
-                                    <input type="text" class="form-control" id="usernameInicioSes" name="usernameRegist" placeholder="Nombre de cuenta" required>
+                                    <input type="text" class="form-control" id="usernameInicioSes" name="usernameRegist" placeholder="Nombre de cuenta" value="<%= session.getAttribute("User") %>" required>
                                     <div class="invalid-feedback" style="width: 100%;">
                                       Tu nombre de cuenta es obligatorio.
                                     </div>
@@ -461,7 +471,7 @@
                                 <!-- Email -->
                                 <div class="mb-3">
                                   <label for="correoInicioSes">Email </label>
-                                  <input type="email" class="form-control" id="correoInicioSes" name="correoRegist" placeholder="you@example.com" required>
+                                  <input type="email" class="form-control" id="correoInicioSes" name="correoRegist" placeholder="" value="<%= session.getAttribute("Correo") %>" required>
                                   <div class="invalid-feedback">
                                     Correo electrónico es obligatorio.
                                 </div>
@@ -473,7 +483,7 @@
                                 <divst>
 
                                     <label for="birthdateRegist">Fecha de nacimiento</label>                     
-                                   <input  class="form-control" type="date" id="birthdate" name="birthdateRegist">
+                                   <input  class="form-control" type="date" id="birthdate" name="birthdateRegist" value="<%= session.getAttribute("BirthDay") %>">
                                    
                                         <div class="invalid-feedback">
                                             Ingrese una fecha valida.
@@ -489,14 +499,12 @@
                             </form>
                             
                             
-                            <div class="col-md-8 blog-main" style="width:100%">
+                            <br>
                             <form action="PerfilPropioVacio.jsp">
                                 <input class="btn btn-primary btn-sm btn-block" type="submit" value="Cancelar" >
                             </form>
-                            </div>
-                                                    
-                            
-                        
+                           
+
              <br>
 
 
@@ -526,7 +534,7 @@
 
 
          <!-- SIDEBAR RIGHT -->
-         <div class="col-md-2" style="position: relative">
+        <div class="col-md-2" style="position: relative">
             <br />
             <div class="row">
                 <div class="sidenav-right">
@@ -537,19 +545,40 @@
                             <aside class="col-md-12 blog-sidebar">
                                 <div class="p-3 mb-3 bg-light rounded">
                                     
-                                    <form action="PerfilPropioVacio.jsp">
-                                        <img src="" class="round_img" c lass="a_center" alt="Profile Picture" width="30" height="30" >
-                                        <button class="btn"> Perfil </button>
-                                    </form>
+                                   
+                                   
                                     
                                     <form action="PerfilEditVacio.jsp" method="get">
-
-                                        
                                     
-                                        <h6 class="font-italic"><b>Información Actual del usuario</b></h6>
-                                    <p class="firstName" class="lastName">Nombre: <em>Nombre Apellido</em> </p>
-                                    <p class="username">Username: <em>username</em> </p>
-                                    <p class="email" id="email">Email: <em>you@example.com</em> </p>
+                                  
+                                        
+                                    <div class="row">
+                                      
+                                                      
+                                        <div class="col-md-5">
+                                              <button class="btn">
+                                                        <img  src="data:image/jpeg;base64, <%= session.getAttribute("ImageData") %>"  class="round_img" class="a_center" alt="Profile Picture" 
+                                                              width="50" height="50">
+                                        </button>                     
+                                        </div>    
+                                        
+                                                              
+                                         <div class="col-md-7">
+                                              <p class="card-text"><b><%= session.getAttribute("Nombre")  %> <%= session.getAttribute("Apellido")  %> </b><br>
+                                            <small class="text">@<%= session.getAttribute("User") %> </small></p>             
+                                                               
+                                        </div>  
+                                          
+                                                
+                             
+                                        
+                                    </div>
+                                    <div class="row ">
+                                  
+                                    
+                                    <p class="card-text"><b>Nombre:</b> <br><em><%= session.getAttribute("Nombre")  %> <%= session.getAttribute("Apellido")  %></em> </p>
+                                    <p class="text"><b>Username:</b> <br><em>@<%= session.getAttribute("User") %></em> </p>
+                                    <p class="email" id="email"><b>Email:</b> <br><em><%= session.getAttribute("Correo") %></em> </p>
 
                                     <div class="btn-group" >
                                         <button class="btn btn-primary btn-sm btn-block" type="submit">Editar Perfil</button>
@@ -558,6 +587,12 @@
                                         <input type="text" alt="Submit">
                                         </form> -->
                                     </div>
+                                        
+                                    </div>
+                                    
+                                       
+                                        
+                                        
 
                                     </form>
                                     
@@ -573,12 +608,7 @@
 
             </div>
         </div>
-
-
-
-
-
-
+                                    
         </main>
     </div>
 
@@ -623,7 +653,7 @@
     <!-- Icons -->
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
     <script>
-        feather.replace()
+        feather.replace();
     </script>
 
     <!-- Album cards -->

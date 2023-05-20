@@ -367,8 +367,11 @@
                             <img src="data:image/jpeg;base64, <%= session.getAttribute("ImageData") %>"class="round_img" alt="Profile Picture" width="200" height="200">
                         </div>
                         <div>
-                            <h1 class="display-4 font-italic">Nombre de Usuario </h1>
-                            <small class="text">@username</small>
+                            
+                            
+                                           
+                            <p><h1 class="display-4 font-italic"><b><%= session.getAttribute("Nombre")  %> <%= session.getAttribute("Apellido")  %> </b> </h1><p>
+                             <p><small class="text">@<%= session.getAttribute("User") %> </small></p>
 
                             <p class="lead my-3">Algo que tenga que decir el usuario.</p>
                           
@@ -378,77 +381,74 @@
                 </div>
                 <br><br>
                              <!-- Publicado-->
-                        <div class="container-card">
-                            
-                            <!-- Publicacion 1-->
-                            <div class="card mb-4 box-shadow">
+                                <div class="container-card">
+                                <div class="card mb-4 box-shadow">
 
 
-                                <!-- Card Upper -->
-                                <div class="container-md align-items-center">
-                                    <div class="row">
-                                        <div class="col-sm-2">
-                                            <form action="PerfilPropioVacio.jsp" method="get">
+                                    <!-- Card Upper -->
+                                    <div class="container-md align-items-center">
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                <form action="PerfilPropioVacio.jsp" method="get">
+                                     
+                                                    <button class="btn">
+                                                        <img  src="data:image/jpeg;base64, <%= session.getAttribute("ImageData") %>"  class="round_img" c lass="a_center" alt="Profile Picture" width="72" height="72"  >
+                                                    </button>
+                                                </form>
+                                            </div>
 
-                                                <button class="btn">
-                                                    <img src="" class="round_img" c lass="a_center" alt="Profile Picture" width="72" height="72">
-                                                </button>
-                                            </form>
-                                        </div>
-
-                                        <div class="col-md-10">
-                                            <p class="card-text" id="nombre-propio">
-                                                <b>Nombre Apellido</b><br>
-                                                <small class="text">@username</small>
-                                            </p>
-                                            <div class="container">
-                                                <div class="row justify-content-center">
-                                                    <div class="btn-group">
-                                                        <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/write_button.png" alt="Like" width="20" height="20"></button>
-                                                        <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/control_button.png" alt="Like" width="20" height="20"></button>
-                                                        <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/camera_button.png" alt="Like" width="20" height="20"></button>
-                                                        <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/video_button.png" alt="Like" width="20" height="20"></button>
-                                                        <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/folder_button.png" alt="Like" width="20" height="20"></button>
+                                            <div class="col-md-10">
+                                                <p class="card-text"><b><%= session.getAttribute("Nombre")  %> <%= session.getAttribute("Apellido")  %> </b><br>
+                                            <small class="text">@<%= session.getAttribute("User") %> </small></p>
+                                                <div class="container">
+                                                    <div class="row justify-content-center">
+                                                        <div class="btn-group">
+                                                            <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/write_button.png" alt="Like" width="20" height="20"></button>
+                                                            <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/control_button.png" alt="Like" width="20" height="20"></button>
+                                                            <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/camera_button.png" alt="Like" width="20" height="20"></button>
+                                                            <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/video_button.png" alt="Like" width="20" height="20"></button>
+                                                            <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/folder_button.png" alt="Like" width="20" height="20"></button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
+
                                         </div>
 
                                     </div>
 
-                                </div>
-
-                                <!--Card publication 1 comment -->
-                                <div class="card-body">
-                                    <p class="card-text"></p>
-                                    <img src="" alt="Thumbnail" class="center">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/like_button.png" alt="Like" width="20" height="20"></button>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/dislike_button.png" alt="Dislike" width="20" height="20"></button>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary">Comentarios</button>
+                                    <!--Card publication 1 comment -->
+                                    <div class="card-body">
+                                        <p class="card-text"></p>
+                                        <img src="" alt="Thumbnail" class="center">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/like_button.png" alt="Like" width="20" height="20"></button>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/dislike_button.png" alt="Dislike" width="20" height="20"></button>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary">Comentarios</button>
+                                            </div>
+                                            <small class="text-muted"></small>
                                         </div>
-                                        <small class="text-muted" id="tiempo-publicacion"></small>
                                     </div>
                                 </div>
+
+
+
+                                <!--PAGINATION -->
+                                <nav class="blog-pagination center">
+                                    <a class="btn btn-outline-primary" href="#">1</a>
+                                    <a class="btn btn-outline-primary" href="#">2</a>
+                                    <a class="btn btn-outline-primary" href="#">3</a>
+                                    <a class="btn btn-outline-primary" href="#">4</a>
+                                    <a class="btn btn-outline-primary" href="#">5</a>
+                                    <a class="btn btn-outline-primary" href="#">6</a>
+                                    <a class="btn btn-outline-primary" href="#">7</a>
+                                    <a class="btn btn-outline-primary" href="#">8</a>
+                                    <a class="btn btn-outline-primary" href="#">9</a>
+                                    <a class="btn btn-outline-primary" href="#">10</a>
+                                    
+                                </nav>
                             </div>
-                            
-
-                            <!--PAGINATION -->
-                            <nav class="blog-pagination center">
-                                <a class="btn btn-outline-primary" href="#">1</a>
-                                <a class="btn btn-outline-primary" href="#">2</a>
-                                <a class="btn btn-outline-primary" href="#">3</a>
-                                <a class="btn btn-outline-primary" href="#">4</a>
-                                <a class="btn btn-outline-primary" href="#">5</a>
-                                <a class="btn btn-outline-primary" href="#">6</a>
-                                <a class="btn btn-outline-primary" href="#">7</a>
-                                <a class="btn btn-outline-primary" href="#">8</a>
-                                <a class="btn btn-outline-primary" href="#">9</a>
-                                <a class="btn btn-outline-primary" href="#">10</a>
-                                
-                            </nav>
-                        </div>
                   <!---->
 
 
@@ -464,7 +464,7 @@
 
 
           <!-- SIDEBAR RIGHT -->
-         <div class="col-md-2" style="position: relative">
+        <div class="col-md-2" style="position: relative">
             <br />
             <div class="row">
                 <div class="sidenav-right">
@@ -475,19 +475,40 @@
                             <aside class="col-md-12 blog-sidebar">
                                 <div class="p-3 mb-3 bg-light rounded">
                                     
-                                    <form action="PerfilPropioVacio.jsp">
-                                        <img src="" class="round_img" c lass="a_center" alt="Profile Picture" width="30" height="30" >
-                                        <button class="btn"> Perfil </button>
-                                    </form>
+                                   
+                                   
                                     
                                     <form action="PerfilEditVacio.jsp" method="get">
-
-                                        
                                     
-                                        <h6 class="font-italic"><b>Información Actual del usuario</b></h6>
-                                    <p class="firstName" class="lastName">Nombre: <em>Nombre Apellido</em> </p>
-                                    <p class="username">Username: <em>username</em> </p>
-                                    <p class="email" id="email">Email: <em>you@example.com</em> </p>
+                                  
+                                        
+                                    <div class="row">
+                                      
+                                                      
+                                        <div class="col-md-5">
+                                              <button class="btn">
+                                                        <img  src="data:image/jpeg;base64, <%= session.getAttribute("ImageData") %>"  class="round_img" class="a_center" alt="Profile Picture" 
+                                                              width="50" height="50">
+                                        </button>                     
+                                        </div>    
+                                        
+                                                              
+                                         <div class="col-md-7">
+                                              <p class="card-text"><b><%= session.getAttribute("Nombre")  %> <%= session.getAttribute("Apellido")  %> </b><br>
+                                            <small class="text">@<%= session.getAttribute("User") %> </small></p>             
+                                                               
+                                        </div>  
+                                          
+                                                
+                             
+                                        
+                                    </div>
+                                    <div class="row ">
+                                  
+                                    
+                                    <p class="card-text"><b>Nombre:</b> <br><em><%= session.getAttribute("Nombre")  %> <%= session.getAttribute("Apellido")  %></em> </p>
+                                    <p class="text"><b>Username:</b> <br><em>@<%= session.getAttribute("User") %></em> </p>
+                                    <p class="email" id="email"><b>Email:</b> <br><em><%= session.getAttribute("Correo") %></em> </p>
 
                                     <div class="btn-group" >
                                         <button class="btn btn-primary btn-sm btn-block" type="submit">Editar Perfil</button>
@@ -496,6 +517,12 @@
                                         <input type="text" alt="Submit">
                                         </form> -->
                                     </div>
+                                        
+                                    </div>
+                                    
+                                       
+                                        
+                                        
 
                                     </form>
                                     

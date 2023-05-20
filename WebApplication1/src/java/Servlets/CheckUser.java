@@ -48,7 +48,7 @@ public class CheckUser extends HttpServlet {
               Class.forName("com.mysql.jdbc.Driver");
 
             // Establecemos la conexión con la base de datos
-            Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "root", "Maag201200.");
+            Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "root", "lolcats23");
         
               PreparedStatement stm = conexion.prepareStatement("Select * from tbl_user WHERE `Correo`='"+CorreoInput +"' and `PassWord` ='"+PasswordInput +"'");
             ResultSet rs = stm.executeQuery();
