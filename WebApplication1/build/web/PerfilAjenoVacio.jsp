@@ -465,7 +465,7 @@
 
 
                  <!-- SIDEBAR RIGHT -->
-         <div class="col-md-2" style="position: relative">
+        <div class="col-md-2" style="position: relative">
             <br />
             <div class="row">
                 <div class="sidenav-right">
@@ -476,19 +476,40 @@
                             <aside class="col-md-12 blog-sidebar">
                                 <div class="p-3 mb-3 bg-light rounded">
                                     
-                                    <form action="PerfilPropioVacio.jsp">
-                                        <img src="" class="round_img" c lass="a_center" alt="Profile Picture" width="30" height="30" >
-                                        <button class="btn"> Perfil </button>
-                                    </form>
+                                   
+                                   
                                     
                                     <form action="PerfilEditVacio.jsp" method="get">
-
-                                        
                                     
-                                        <h6 class="font-italic"><b>Información Actual del usuario</b></h6>
-                                    <p class="firstName" class="lastName">Nombre: <em>Nombre Apellido</em> </p>
-                                    <p class="username">Username: <em>username</em> </p>
-                                    <p class="email" id="email">Email: <em>you@example.com</em> </p>
+                                  
+                                        
+                                    <div class="row">
+                                      
+                                                      
+                                        <div class="col-md-5">
+                                              <button class="btn">
+                                                        <img  src="data:image/jpeg;base64, <%= session.getAttribute("ImageData") %>"  class="round_img" class="a_center" alt="Profile Picture" 
+                                                              width="50" height="50">
+                                        </button>                     
+                                        </div>    
+                                        
+                                                              
+                                         <div class="col-md-7">
+                                              <p class="card-text"><b><%= session.getAttribute("Nombre")  %> <%= session.getAttribute("Apellido")  %> </b><br>
+                                            <small class="text">@<%= session.getAttribute("User") %> </small></p>             
+                                                               
+                                        </div>  
+                                          
+                                                
+                             
+                                        
+                                    </div>
+                                    <div class="row ">
+                                  
+                                    
+                                    <p class="card-text"><b>Nombre:</b> <br><em><%= session.getAttribute("Nombre")  %> <%= session.getAttribute("Apellido")  %></em> </p>
+                                    <p class="text"><b>Username:</b> <br><em>@<%= session.getAttribute("User") %></em> </p>
+                                    <p class="email" id="email"><b>Email:</b> <br><em><%= session.getAttribute("Correo") %></em> </p>
 
                                     <div class="btn-group" >
                                         <button class="btn btn-primary btn-sm btn-block" type="submit">Editar Perfil</button>
@@ -497,6 +518,12 @@
                                         <input type="text" alt="Submit">
                                         </form> -->
                                     </div>
+                                        
+                                    </div>
+                                    
+                                       
+                                        
+                                        
 
                                     </form>
                                     
@@ -512,6 +539,7 @@
 
             </div>
         </div>
+                              
     </div>
 
 
