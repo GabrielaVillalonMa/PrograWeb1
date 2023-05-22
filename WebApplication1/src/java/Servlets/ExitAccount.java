@@ -11,6 +11,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,9 +36,25 @@ public class ExitAccount extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
          
-          Conexion.ExitUser( request.getAttribute("Id").toString()); 
+          HttpSession session = request.getSession();
+             /* TODO output your page here. You may use following sample code. */
+              Object A = session.getAttribute("Id");
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet NewServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+    
+    out.println(A.toString());
+    String B= A.toString();
+    Conexion.ExitUser(B);
+            out.println("</body>");
+            out.println("</html>");
             
-            
+          response.sendRedirect("RegistLog.jsp");
+
+       
             
         }
     }

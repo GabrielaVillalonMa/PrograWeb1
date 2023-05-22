@@ -283,7 +283,7 @@
       
       <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group mr-2">
-            <form action="RegistLog.jsp" method="get">
+            <form action="ExitAccount" method="Post">
                 <button class="btn btn-primary btn-sm btn-block">
                     <img src="imagenes/exit_button_w.png" alt="Exit" width="20" height="20">
                     Signout
@@ -442,7 +442,7 @@
                                         </div>
 
                                         <div class="col-md-10">
-                                            <p class="card-text"><b><%= session.getAttribute("Nombre")  %> <%= session.getAttribute("Apellido")  %> </b><br>
+                                            <p class="card-text"><b><%= session.getAttribute("Nombr")  %> <%= session.getAttribute("Apellido")  %> </b><br>
                                             <small class="text">@<%= session.getAttribute("User") %> </small></p>
                                             <div class="container">
                                             <div class="row justify-content-center">
@@ -775,5 +775,7 @@
             }
         });
     </script>
+    
+   
 </body>
 </html>
