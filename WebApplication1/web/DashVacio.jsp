@@ -437,7 +437,7 @@
                                     <div class="container-md align-items-center">
                                         <div class="row">
                                             <div class="col-sm-2">
-                                                <form action="PerfilPropioVacio.jsp" method="get">
+                                                <form action="PerfilAjenoVacio.jsp" method="get">
                                      
                                                     <button class="btn">
                                                         <img  src="data:image/jpeg;base64, <%= session.getAttribute("ImageData") %>"  class="round_img" c lass="a_center" alt="Profile Picture" width="72" height="72"  >
