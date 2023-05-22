@@ -25,7 +25,6 @@ import org.apache.jasper.tagplugins.jstl.core.Catch;
  */
 public class AddUser extends HttpServlet {
 
-   
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -39,62 +38,50 @@ public class AddUser extends HttpServlet {
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-              Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
 
             // Establecemos la conexión con la base de datos
             Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "root", "lolcats23");
-         String Name = request.getParameter("nombreRegist"); 
-         String Apellido = request.getParameter("apellidoRegist");
-         String Username= request.getParameter("usernameRegist");
-         String Correo = request.getParameter("correoRegist");
-         String Password1= request.getParameter("password");
-        String Image1 =  "x'89504E470D0A1A0A0000000D4948445200000010000000100802000000909168360000000173524"
-                + "74200AECE1CE90000000467414D410000B18F0BFC6105000000097048597300000EC300000EC301C76FA86400000"
-                + "01E49444154384F6350DAE843126220493550F1A80662426C349406472801006AC91F1040F796BD0000000049454E44AE426082'";
-                
-         String DateBirth = request.getParameter("birthdateRegist");
-          out.println("<!DOCTYPE html>");
+            String Name = request.getParameter("nombreRegist");
+            String Apellido = request.getParameter("apellidoRegist");
+            String Username = request.getParameter("usernameRegist");
+            String Correo = request.getParameter("correoRegist");
+            String Password1 = request.getParameter("password");
+            String Image1 = "x'89504E470D0A1A0A0000000D4948445200000010000000100802000000909168360000000173524"
+                    + "74200AECE1CE90000000467414D410000B18F0BFC6105000000097048597300000EC300000EC301C76FA86400000"
+                    + "01E49444154384F6350DAE843126220493550F1A80662426C349406472801006AC91F1040F796BD0000000049454E44AE426082'";
+
+            String DateBirth = request.getParameter("birthdateRegist");
+            out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AddUser</title>");            
+            out.println("<title>Servlet AddUser</title>");
             out.println("</head>");
             out.println("<body>");
-         
-            
-            
-            
-              PreparedStatement stm ;
-         
-            
-        
-        ResultSet rs ;
-      
-           
-                    
-     
-        
-     String Command = "Insert into tbl_user(`UserName`,`PassWord`,`Nombre`,`Apellido`,`Correo`, `DateBirth`,`DateRegist`,`ProfPic`,`Id_Status`)"
-                 + " values ('"+Username+"','"+Password1+"','"+Name+"','"+Apellido+"','"+Correo+"','"+DateBirth+"',Now(),"+Image1+",2);";
- // out.println(Command);
-    stm= conexion.prepareStatement(Command);
-          stm.executeUpdate();
-          
-          
-          
-        
-       rs=stm.executeQuery("Select * from tbl_user WHERE `Correo`='"+Correo +"' and `PassWord` ='"+Password1 +"'");
-        if (rs.next()) {
-               
-        out.println("<h1>Usuario Registrado</h1>");
-        
-          }else  {
-             
-       out.println("<h1>Usuario no Registrado</h1>");
-      
-        }
-        
-        out.print(" <form action=\"RegistLog.jsp\" method=\"get\"><button>Back</button></form>");
-                out.println("</body>");
+
+            PreparedStatement stm;
+
+            ResultSet rs;
+
+            String Command = "Insert into tbl_user(`UserName`,`PassWord`,`Nombre`,`Apellido`,`Correo`, `DateBirth`,`DateRegist`,`ProfPic`,`Id_Status`)"
+                    + " values ('" + Username + "','" + Password1 + "','" + Name + "','" + Apellido + "','" + Correo + "','" + DateBirth + "',Now()," + Image1 + ",2);";
+            // out.println(Command);
+            stm = conexion.prepareStatement(Command);
+            stm.executeUpdate();
+
+            rs = stm.executeQuery("Select * from tbl_user WHERE `Correo`='" + Correo + "' and `PassWord` ='" + Password1 + "'");
+            if (rs.next()) {
+
+                out.println("<h1>Usuario Registrado</h1>");
+
+            } else {
+
+                out.println("<h1>Usuario no Registrado</h1>");
+
+            }
+
+            out.print(" <form action=\"RegistLog.jsp\" method=\"get\"><button>Back</button></form>");
+            out.println("</body>");
             out.println("</html>");
         }
     }

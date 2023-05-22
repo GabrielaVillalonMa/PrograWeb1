@@ -276,7 +276,7 @@
             
         </form> 
 
-    <input class="form-control form-control-dark container-search" type="text" placeholder="Search" aria-label="Search">
+    <input class="form-control form-control-dark container-search" name="search" type="text" placeholder="Search" aria-label="Search">
     
     
   <ul class="navbar-nav px-3">
@@ -352,15 +352,15 @@
                             <div class="row">
                                 <div class="col-md-7  container-card">
                                     <form>
-                                        <input type="checkbox" id="discussion" name="discussion" value="Discussion">
+                                        <input type="checkbox" id="discussion" name="discussion" value="1">
                                         <label for="discussion"> Discusión</label><br>
-                                        <input type="checkbox" id="videogames" name="videogames" value="Videogames">
+                                        <input type="checkbox" id="videogames" name="videogames" value="2">
                                         <label for="videogames"> Videojuegos</label><br>
-                                        <input type="checkbox" id="photos" name="photos" value="Photos">
+                                        <input type="checkbox" id="photos" name="photos" value="3">
                                         <label for="photos"> Fotos</label><br>
-                                        <input type="checkbox" id="videos" name="videos" value="Videos">
+                                        <input type="checkbox" id="videos" name="videos" value="4">
                                         <label for="videos"> Videos</label><br>
-                                        <input type="checkbox" id="files" name="files" value="Files">
+                                        <input type="checkbox" id="files" name="files" value="5">
                                         <label for="files"> Archivos</label>
                                     </form>
 
@@ -390,7 +390,7 @@
 
                                         <div class="mb-3">
                                             <label for="fechaDESP">Después de: </label><br>
-                                            <input  class="form-control" type="date" id="fechaDESP" name="fechaDESP">
+                                            <input  class="form-control" type="date" id="fechaDESP" name="fechaDESP" >
                                             <div class="invalid-feedback">
                                                 Ingrese una fecha valida.
                                             </div>

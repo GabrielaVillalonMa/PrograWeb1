@@ -8,6 +8,14 @@
         <servlet-name>FindUserById</servlet-name>
         <servlet-class>Servlets.FindUserById</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FancySearch</servlet-name>
+        <servlet-class>Servlets.FancySearch</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ExitAccount</servlet-name>
+        <servlet-class>Servlets.ExitAccount</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CheckUser</servlet-name>
         <url-pattern>/CheckUser</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>FindUserById</servlet-name>
         <url-pattern>/FindUserById</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FancySearch</servlet-name>
+        <url-pattern>/FancySearch</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExitAccount</servlet-name>
+        <url-pattern>/ExitAccount</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>RegistLog.jsp</welcome-file>

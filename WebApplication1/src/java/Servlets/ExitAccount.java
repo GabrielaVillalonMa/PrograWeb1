@@ -5,7 +5,6 @@
 package Servlets;
 
 import Classes.Conexion;
-import Classes.Publicacion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -20,7 +19,7 @@ import java.util.logging.Logger;
  *
  * @author Marco A Aguirre G
  */
-public class Pagina extends HttpServlet {
+public class ExitAccount extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,18 +31,14 @@ public class Pagina extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ClassNotFoundException, SQLException {
-        String Disc = "", Game = "", Pic = "", Vid = "", Arch = "", BeforeDate = "", AfterDate = "";
+            throws ServletException, IOException, SQLException, ClassNotFoundException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
-            String pageParam = request.getParameter("p");
-            int page = (pageParam != null) ? Integer.parseInt(pageParam) : 1;
-
-            request.setAttribute("publicaciones", Conexion.ReadPublication(page, "Where deleted!=1"));
-
-            response.sendRedirect("DashVacio.jsp");
-
+         
+          Conexion.ExitUser( request.getAttribute("Id").toString()); 
+            
+            
+            
         }
     }
 
@@ -61,10 +56,10 @@ public class Pagina extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Pagina.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(Pagina.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ExitAccount.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ExitAccount.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -81,10 +76,10 @@ public class Pagina extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Pagina.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(Pagina.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ExitAccount.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ExitAccount.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

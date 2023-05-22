@@ -4,20 +4,20 @@
  */
 package Classes;
 
-import lombok.Getter;
-import lombok.Setter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Base64;
+
 /**
  *
  * @author Marco A Aguirre G
  */
 public class User {
-    
- @Getter @Setter  public String User,Nombre,Apellido,Correo,Password,BirthDay,ImageData;
 
-    public User(String User, String Nombre, String Apellido, String Correo, String Password, String BirthDay,String ImageData) {
+    public String User, Nombre, Apellido, Correo, Password, BirthDay, ImageData,Id;
+
+    public User(String User, String Nombre, String Apellido, String Correo, String Password, String BirthDay, String ImageData,String Id) {
+        this.Id=Id;
         this.User = User;
         this.Nombre = Nombre;
         this.Apellido = Apellido;
@@ -26,8 +26,9 @@ public class User {
         this.BirthDay = BirthDay;
         this.ImageData = ImageData;
     }
-    
+
     public User(ResultSet rs) throws SQLException {
+            this.Id = rs.getString("Id_User");
         this.User = rs.getString("UserName");
         this.Nombre = rs.getString("Nombre");
         this.Apellido = rs.getString("Apellido");
@@ -35,8 +36,8 @@ public class User {
         this.Password = rs.getString("PassWord");
         this.BirthDay = rs.getString("DateBirth");
         byte[] imageData = rs.getBytes("ProfPic");
-         this.ImageData = Base64.getEncoder().encodeToString(imageData);
-          
+        this.ImageData = Base64.getEncoder().encodeToString(imageData);
+
     }
-    
+
 }

@@ -5,7 +5,6 @@
 package Servlets;
 
 import Classes.Conexion;
-import Classes.Publicacion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -20,7 +19,7 @@ import java.util.logging.Logger;
  *
  * @author Marco A Aguirre G
  */
-public class Pagina extends HttpServlet {
+public class FancySearch extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,17 +32,36 @@ public class Pagina extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
-        String Disc = "", Game = "", Pic = "", Vid = "", Arch = "", BeforeDate = "", AfterDate = "";
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
-            String pageParam = request.getParameter("p");
+            /* TODO output your page here. You may use following sample code. */
+           String Dis =request.getParameter("discussion");
+            String Game =request.getParameter("videogames");
+             String Vid =request.getParameter("videos");
+              String Pic =request.getParameter("photos");
+               String File =request.getParameter("files");
+                String Search =request.getParameter("search");
+                 String FechaD =request.getParameter("fechaDESP");
+                  String FechaA =request.getParameter("fechaANTES");
+                  
+                   String pageParam = request.getParameter("p");
             int page = (pageParam != null) ? Integer.parseInt(pageParam) : 1;
-
-            request.setAttribute("publicaciones", Conexion.ReadPublication(page, "Where deleted!=1"));
-
-            response.sendRedirect("DashVacio.jsp");
-
+                  
+                  request.setAttribute("publicaciones", Conexion.SearchPubli(Game, Pic, Vid, File, Dis, page, FechaA, FechaA, Search));
+request.setAttribute("search", Search );
+   request.setAttribute("discussion", Dis );
+   request.setAttribute("videogames", Game );
+   request.setAttribute("video", Vid );
+   request.setAttribute("photos", Pic );
+   request.setAttribute("file", File );
+   request.setAttribute("fechaDesp", FechaD );
+   request.setAttribute("fechaAntes", FechaA );
+   
+   
+                  
+                  
+            response.sendRedirect("DashVacio.jsp");    
+                 
         }
     }
 
@@ -62,9 +80,9 @@ public class Pagina extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Pagina.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FancySearch.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(Pagina.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FancySearch.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -82,9 +100,9 @@ public class Pagina extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Pagina.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FancySearch.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(Pagina.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FancySearch.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

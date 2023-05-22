@@ -43,12 +43,12 @@ public class CheckUser extends HttpServlet {
 
         try (PrintWriter out = response.getWriter()) {
 
-           User MyUser = Conexion.VerifyUser(CorreoInput ,PasswordInput);
+            User MyUser = Conexion.VerifyUser(CorreoInput, PasswordInput);
 
-            if (MyUser!=null) {
-                SeshSet(request,MyUser);
-RequestDispatcher dispatcher = request.getRequestDispatcher("/Pagina?p=0");
-dispatcher.forward(request, response);
+            if (MyUser != null) {
+                SeshSet(request, MyUser);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/Pagina?p=0");
+                dispatcher.forward(request, response);
 
             } else {
                 out.println("<script type=\"text/javascript\">");
@@ -117,13 +117,14 @@ dispatcher.forward(request, response);
     static void SeshSet(HttpServletRequest request, User MyUser) {
 
         HttpSession MySesh = request.getSession();
+        MySesh.setAttribute("Id",MyUser.Id);
         MySesh.setAttribute("User", MyUser.User);
         MySesh.setAttribute("Nombre", MyUser.Nombre);
         MySesh.setAttribute("Apellido", MyUser.Apellido);
         MySesh.setAttribute("Correo", MyUser.Correo);
         MySesh.setAttribute("Password", MyUser.Password);
         MySesh.setAttribute("BirthDay", MyUser.BirthDay);
-        MySesh.setAttribute("ImageData",MyUser.ImageData);
+        MySesh.setAttribute("ImageData", MyUser.ImageData);
     }
 
 }
