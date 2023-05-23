@@ -5,6 +5,7 @@
 package Servlets;
 
 import Classes.Conexion;
+import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -60,7 +61,8 @@ request.setAttribute("search", Search );
    
                   
                   
-            response.sendRedirect("DashVacio.jsp");    
+           RequestDispatcher dispatcher = request.getRequestDispatcher("DashVacio.jsp");
+              dispatcher.forward(request, response);
                  
         }
     }

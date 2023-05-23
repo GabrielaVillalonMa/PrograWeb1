@@ -322,26 +322,10 @@
                     </h6>
                     <ul class="nav flex-column mb-2">
 
-                    <form>
+                    <form action="FancySearch" method="get" >
   
                         <!-- Likes/Dislikes -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                Likes y Dislikes
-                            </a>
-
-                            <div class="row-md-2">
-                                <div class="col-md-7  container-card">
-                                    <form>
-                                        <input type="radio" id="html" name="fav_language" value="HTML">
-                                        <label for="html">Más Likes</label><br>
-                                        <input type="radio" id="css" name="fav_language" value="CSS">
-                                        <label for="css">Más Dislikes</label>
-                                    </form>
-                                </div>
-                            </div>
-                        </li>
+                       
 
                         <!-- Categorias/Tags -->
                         <li class="nav-item">
@@ -406,7 +390,8 @@
                         
                         
 
-                        <input class="btn btn-primary btn-sm btn-block" type="submit" id="bucarFiltro" value="Buscar">
+                        <input class="btn btn-primary btn-sm btn-block" type="submit" id="bucarFiltro" value="Buscar" href="RegistLog.jsp">
+                        
                     </form>
 
                     </ul>
@@ -456,24 +441,24 @@
 
                                             <ul class="category">
                                                   <li>
-                                                    <input type="radio" id="discusion" name="amount" class="btn btn-sm btn-outline-secondary" />
-                                                    <label for="discusion"><img src="imagenes/write_button.png" alt="Like" width="20" height="20" href="#Discusion" id="1"></label>
+                                                    <input type="radio" id="discusion" name="categoryP1" class="btn btn-sm btn-outline-secondary" />
+                                                    <label for="discusion"><img src="imagenes/write_button.png" alt="Like" width="20" height="20" href="#Discusion"></label>
                                                   </li>
                                                   <li>
-                                                    <input type="radio" id="videojuegos" name="amount" />
-                                                    <label for="a50">$50</label>
+                                                    <input type="radio" id="videojuegos" name="categoryP1" />
+                                                    <label for="a50"><img src="imagenes/control_button.png" alt="Like" width="20" height="20" href="#VideoJuegos"></label>
                                                   </li>
                                                   <li>
-                                                    <input type="radio" id="fotos" name="amount" checked="checked" />
-                                                    <label for="a75">$75</label>
+                                                    <input type="radio" id="fotos" name="categoryP1" checked="checked" />
+                                                    <label for="a75"><img src="imagenes/camera_button.png" alt="Like" width="20" height="20" href="#Fotos"></label>
                                                   </li>
                                                   <li>
-                                                    <input type="radio" id="videos" name="amount" />
-                                                    <label for="a100">$100</label>
+                                                    <input type="radio" id="videos" name="categoryP1" />
+                                                    <label for="a100"><img src="imagenes/video_button.png" alt="Like" width="20" height="20" href="#Videos"></label>
                                                   </li>
                                                   <li>
-                                                    <input type="radio" id="archivos" name="amount" />
-                                                    <label for="other">other:</label>
+                                                    <input type="radio" id="archivos" name="categoryP1" />
+                                                    <label for="other"><img src="imagenes/folder_button.png" alt="Like" width="20" height="20" href="#Archivos" ></label>
                                                   </li>
                                                  
                                                 </ul>
@@ -501,6 +486,17 @@
                                     
                                 
                                 </div>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="Classes.Publicacion" %>
+
+<%
+   List<Publicacion> publications = new ArrayList<>();
+   publications = (List<Publicacion>) request.getAttribute("publicaciones");
+%> 
+
+<% for (Publicacion publication : publications) { %>
+   <!-- Add your code here -->
 
                                  <!-- Publicado-->
                                 <div class="container-card">
@@ -524,13 +520,29 @@
                                             <small class="text">@<%= session.getAttribute("User") %> </small></p>
                                                 <div class="container">
                                                     <div class="row justify-content-center">
-                                                        <div class="btn-group">
-                                                            <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/write_button.png" alt="Like" width="20" height="20"></button>
-                                                            <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/control_button.png" alt="Like" width="20" height="20"></button>
-                                                            <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/camera_button.png" alt="Like" width="20" height="20"></button>
-                                                            <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/video_button.png" alt="Like" width="20" height="20"></button>
-                                                            <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/folder_button.png" alt="Like" width="20" height="20"></button>
-                                                        </div>
+                                                         <ul class="category">
+                                                  <li>
+                                                    <input type="radio" id="discusion" name="categoryP2" class="btn btn-sm btn-outline-secondary" disabled />
+                                                    <label for="discusion"><img src="imagenes/write_button.png" alt="Like" width="20" height="20" href="#Discusion"></label>
+                                                  </li>
+                                                  <li>
+                                                    <input type="radio" id="videojuegos" name="categoryP2" disabled/>
+                                                    <label for="a50"><img src="imagenes/control_button.png" alt="Like" width="20" height="20" href="#VideoJuegos"></label>
+                                                  </li>
+                                                  <li>
+                                                    <input type="radio" id="fotos" name="categoryP2" checked="checked" disabled/>
+                                                    <label for="a75"><img src="imagenes/camera_button.png" alt="Like" width="20" height="20" href="#Fotos"></label>
+                                                  </li>
+                                                  <li>
+                                                    <input type="radio" id="videos" name="categoryP2" disabled/>
+                                                    <label for="a100"><img src="imagenes/video_button.png" alt="Like" width="20" height="20" href="#Videos"></label>
+                                                  </li>
+                                                  <li>
+                                                    <input type="radio" id="archivos" name="categoryP2" disabled/>
+                                                    <label for="other"><img src="imagenes/folder_button.png" alt="Like" width="20" height="20" href="#Archivos" ></label>
+                                                  </li>
+                                                 
+                                                </ul>
                                                     </div>
                                                 </div>
                                             </div>
@@ -556,7 +568,11 @@
 
 
 
-                                <!--PAGINATION -->
+                                
+                            </div>
+                      <!---->
+<% } %>
+<!--PAGINATION -->
                                 <nav class="blog-pagination center">
                                     <button class="btn btn-outline-primary" href="#">1</button>
                                     <button class="btn btn-outline-primary" href="#">2</button>
@@ -570,10 +586,6 @@
                                     <button class="btn btn-outline-primary" href="#">10</button>
                                     
                                 </nav>
-                            </div>
-                      <!---->
-
-
 
 
                         </div> 
@@ -705,7 +717,7 @@
     var yyyy = today.getFullYear();
 
     today = yyyy + '-' + mm + '-' + dd;
-    $('#fechaDESP').attr('min',today);
+    $('#fechaDESP').attr('max',today);
 
         </script>
     

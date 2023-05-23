@@ -6,6 +6,7 @@ package Servlets;
 
 import Classes.Conexion;
 import Classes.Publicacion;
+import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -42,7 +43,10 @@ public class Pagina extends HttpServlet {
 
             request.setAttribute("publicaciones", Conexion.ReadPublication(page, "Where deleted!=1"));
 
-            response.sendRedirect("DashVacio.jsp");
+            
+            RequestDispatcher dispatcher = request.getRequestDispatcher("DashVacio.jsp");
+              dispatcher.forward(request, response);
+            
 
         }
     }
