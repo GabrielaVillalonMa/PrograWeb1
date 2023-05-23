@@ -65,6 +65,7 @@ public class Conexion {
         return null;
 
     }
+<<<<<<< Updated upstream
 
     public static String GetCategoria(String Publicacion) throws ClassNotFoundException, SQLException {
 
@@ -91,6 +92,39 @@ public class Conexion {
          
             
 
+=======
+    
+    
+    public static String GetCategoria(String Publicacion) throws ClassNotFoundException, SQLException{
+    
+         try (Connection conn = Connect()) {
+          
+           PreparedStatement stm = conn.prepareStatement("Select * from tbl_publicacioncategorias where Id_Post ="+Publicacion);
+            ResultSet rs = stm.executeQuery();
+             if(rs.next()){
+            return rs.getString("Id_Cat"); 
+             }
+             
+             
+             
+         }
+        
+        
+    
+        return null;
+
+    }
+     
+    public static   List<Publicacion> ReadPublication(int Multi,String Where) throws ClassNotFoundException, SQLException{
+          List<Publicacion> publications = new ArrayList<>();
+        
+        try (Connection conn = Connect()) {
+         PreparedStatement stm = conn.prepareStatement("Select * from tbl_publicacion "+Where+" Limit "+ Multi*10+",10");
+         
+                 
+            ResultSet rs = stm.executeQuery();
+     
+>>>>>>> Stashed changes
             while (rs.next()) {
 
                 Publicacion publication = new Publicacion(rs);

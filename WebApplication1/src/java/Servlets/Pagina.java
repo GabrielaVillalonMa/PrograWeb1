@@ -38,10 +38,16 @@ public class Pagina extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
+<<<<<<< Updated upstream
             String pageParam = request.getParameter("p");
             int page = (pageParam != null) ? Integer.parseInt(pageParam) : 1;
 
             request.setAttribute("publicaciones", Conexion.ReadPublication(page, "Where deleted!=1"));
+=======
+RequestDispatcher dispatcher = request.getRequestDispatcher("DashVacio.jsp?p="+page);
+dispatcher.forward(request, response);
+
+>>>>>>> Stashed changes
 
             
             RequestDispatcher dispatcher = request.getRequestDispatcher("DashVacio.jsp");
