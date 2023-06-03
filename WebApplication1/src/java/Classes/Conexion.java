@@ -84,6 +84,7 @@ public class Conexion {
         return null;
 
     }
+<<<<<<< HEAD
      
     public static   List<Publicacion> ReadPublication(int Multi,String Where) throws ClassNotFoundException, SQLException{
           List<Publicacion> publications = new ArrayList<>();
@@ -94,6 +95,17 @@ public class Conexion {
                  
             ResultSet rs = stm.executeQuery();
      
+=======
+
+    public static List<Publicacion> ReadPublication(int Multi, String Where) throws ClassNotFoundException, SQLException {
+        List<Publicacion> publications = new ArrayList<>();
+
+        try (Connection conn = Connect()) {
+            PreparedStatement stm = conn.prepareStatement("Select * from tbl_publicacion " + Where + " Limit " + Multi * 10 + ",10");
+            ResultSet rs = stm.executeQuery();
+         
+            
+>>>>>>> parent of 750a6e5 (FRONT Cambios correctos primera entrega)
 
             while (rs.next()) {
 

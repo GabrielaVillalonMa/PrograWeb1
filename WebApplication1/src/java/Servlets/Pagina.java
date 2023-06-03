@@ -43,8 +43,15 @@ public class Pagina extends HttpServlet {
 
             request.setAttribute("publicaciones", Conexion.ReadPublication(page, "Where deleted!=1"));
 
+<<<<<<< HEAD
             RequestDispatcher dispatcher = request.getRequestDispatcher("DashVacio.jsp?p=" + page);
             dispatcher.forward(request, response);
+=======
+            
+            RequestDispatcher dispatcher = request.getRequestDispatcher("DashVacio.jsp");
+              dispatcher.forward(request, response);
+            
+>>>>>>> parent of 750a6e5 (FRONT Cambios correctos primera entrega)
 
         }
     }
