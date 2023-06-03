@@ -63,12 +63,17 @@ public class AddUser extends HttpServlet {
 
             ResultSet rs;
 
+            
+            
+            
             String Command = "Insert into tbl_user(`UserName`,`PassWord`,`Nombre`,`Apellido`,`Correo`, `DateBirth`,`DateRegist`,`ProfPic`,`Id_Status`)"
                     + " values ('" + Username + "','" + Password1 + "','" + Name + "','" + Apellido + "','" + Correo + "','" + DateBirth + "',Now()," + Image1 + ",2);";
             // out.println(Command);
             stm = conexion.prepareStatement(Command);
             stm.executeUpdate();
 
+           
+                        
             rs = stm.executeQuery("Select * from tbl_user WHERE `Correo`='" + Correo + "' and `PassWord` ='" + Password1 + "'");
             if (rs.next()) {
 

@@ -199,7 +199,6 @@
         </style> 
 
         <style>
-    .category {
             .category {
                 list-style-type: none;
                 margin: 25px 0 0 0;
