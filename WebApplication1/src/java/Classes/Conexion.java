@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class Conexion {
 
-    final static String MyUrl = "jdbc:mysql://localhost:3306/mydatabase", MyRoot = "root", MyPassword = "Maag201200.";
+    final static String MyUrl = "jdbc:mysql://localhost:3306/mydatabase", MyRoot = "root", MyPassword = "lolcats23";
 
     private static Connection Connect() throws ClassNotFoundException, SQLException {
 
@@ -73,7 +73,7 @@ public class Conexion {
 
         try (Connection conn = Connect()) {
 
-            PreparedStatement stm = conn.prepareStatement("Select * from tbl_publicacioncategorias where Id_Post =" + Publicacion);
+            PreparedStatement stm = conn.prepareStatement("Select * from tbl_publicacion where Id_Post =" + Publicacion);
             ResultSet rs = stm.executeQuery();
             if (rs.next()) {
                 return rs.getString("Id_Cat");

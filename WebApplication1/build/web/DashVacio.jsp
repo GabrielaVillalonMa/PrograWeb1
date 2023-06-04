@@ -308,6 +308,17 @@
    
 
     <div class="row">
+         <%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="Classes.Publicacion" %>
+<%@ page import="Classes.User" %>
+<%
+   List<Publicacion> publications = new ArrayList<>();
+   publications = (List<Publicacion>) request.getAttribute("publicaciones");
+   
+
+%>
+
           <!-- SIDEBAR LEFT -->
         <div class="col-md-2" style="position: relative; background-color: #E4E4E4;">
             <div class="row">
@@ -325,15 +336,19 @@
 
                     <form action="FancySearch" method="post" >
   
-                        <!-- Likes/Dislikes -->
-                       
-
-                        <!-- Categorias/Tags -->
-                        <li class="nav-item">
-                        <li>
+                        <!--Search -->
+                       <li>
+                           <a class="nav-link" href="#">
+                                <span data-feather="file-text"></span>
+                                Search 
+                            </a>
                             <input class="form-control form-control-dark container-search " name="search" type="text" placeholder="Search" aria-label="Search">
                             
                         </li>
+
+                        <!-- Categorias/Tags -->
+                        <li class="nav-item">
+                        
                             <a class="nav-link" href="#">
                                 <span data-feather="file-text"></span>
                                 Categorías (Tags)
@@ -394,7 +409,7 @@
                         </li>
                         
                         
-
+                        
                         <input class="btn btn-primary btn-sm btn-block" type="submit" id="bucarFiltro" value="Buscar" href="RegistLog.jsp">
                         
                     </form>
@@ -406,6 +421,7 @@
         </div>
 
  
+            
         <!-- MIDDLE -->
         <div class="col-md-8" >
             <div class="row">
@@ -414,6 +430,8 @@
                     </div>
                     <div class="col-sm-12"  >
                         <div class="album py-5 bg-light" >
+                            
+                            
                             <!-- Publicar-->
                             <div class="container-card">
                                 <div class="card mb-4 box-shadow" >
@@ -446,24 +464,24 @@
 
                                             <ul class="category">
                                                   <li>
-                                                    <input type="radio" id="discusion" name="categoryP1" class="btn btn-sm btn-outline-secondary" />
+                                                    <input type="radio" id="discusion" name="categoryP1" />
                                                     <label for="discusion"><img src="imagenes/write_button.png" alt="Like" width="20" height="20" href="#Discusion"></label>
                                                   </li>
                                                   <li>
                                                     <input type="radio" id="videojuegos" name="categoryP1" />
-                                                    <label for="a50"><img src="imagenes/control_button.png" alt="Like" width="20" height="20" href="#VideoJuegos"></label>
+                                                    <label for="videojuegos"><img src="imagenes/control_button.png" alt="Like" width="20" height="20" href="#VideoJuegos"></label>
                                                   </li>
                                                   <li>
                                                     <input type="radio" id="fotos" name="categoryP1" checked="checked" />
-                                                    <label for="a75"><img src="imagenes/camera_button.png" alt="Like" width="20" height="20" href="#Fotos"></label>
+                                                    <label for="fotos"><img src="imagenes/camera_button.png" alt="Like" width="20" height="20" href="#Fotos"></label>
                                                   </li>
                                                   <li>
                                                     <input type="radio" id="videos" name="categoryP1" />
-                                                    <label for="a100"><img src="imagenes/video_button.png" alt="Like" width="20" height="20" href="#Videos"></label>
+                                                    <label for="videos"><img src="imagenes/video_button.png" alt="Like" width="20" height="20" href="#Videos"></label>
                                                   </li>
                                                   <li>
                                                     <input type="radio" id="archivos" name="categoryP1" />
-                                                    <label for="other"><img src="imagenes/folder_button.png" alt="Like" width="20" height="20" href="#Archivos" ></label>
+                                                    <label for="archivos"><img src="imagenes/folder_button.png" alt="Like" width="20" height="20" href="#Archivos" ></label>
                                                   </li>
                                                  
                                                 </ul>
@@ -483,7 +501,7 @@
                                         <!-- <label for="comment">Comment:</label> -->
                                         <textarea class="form-control" rows="5" placeholder="Write a bit?" id="comment"></textarea>
                                     </div>
-                                    <button class="btn" type="submit">Publicar</button>
+                                    <input class="btn btn-primary btn-sm btn-block" type="submit" id="publicar" value="Publicar" href="DashVacio.jsp">
                                     <input type="file" id="myfile" name="myfile">
                                    
                                     </form>
@@ -491,18 +509,12 @@
                                     
                                 
                                 </div>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="Classes.Publicacion" %>
 
-<%
-   List<Publicacion> publications = new ArrayList<>();
-   publications = (List<Publicacion>) request.getAttribute("publicaciones");
-%> 
 
-<% for (Publicacion publication : publications) { %>
-   <!-- Add your code here -->
 
+
+                <% for (Publicacion publication : publications) { %>
+ 
                                  <!-- Publicado-->
                                 <div class="container-card">
                                 <div class="card mb-4 box-shadow">
@@ -515,39 +527,49 @@
                                                 <form action="PerfilAjenoVacio.jsp" method="get">
                                      
                                                     <button class="btn">
-                                                        <img  src="data:image/jpeg;base64, <%= session.getAttribute("ImageData") %>"  class="round_img" c lass="a_center" alt="Profile Picture" width="72" height="72"  >
+                                                        <img  src="data:image/jpeg;base64, <%= publication.Dueno.ImageData %>"  class="round_img" c lass="a_center" alt="Profile Picture" width="72" height="72"  >
                                                     </button>
                                                 </form>
                                             </div>
 
                                             <div class="col-md-10">
-                                                <p class="card-text"><b><%= session.getAttribute("Nombre")  %> <%= session.getAttribute("Apellido")  %> </b><br>
-                                            <small class="text">@<%= session.getAttribute("User") %> </small></p>
+                                                <p class="card-text"><b><%= publication.Dueno.Nombre  %> <%= publication.Dueno.Apellido  %> </b><br>
+                                                    <small class="text">@<%= publication.Dueno.User %> </small></p>
                                                 <div class="container">
                                                     <div class="row justify-content-center">
-                                                         <ul class="category">
-                                                  <li>
-                                                    <input type="radio" id="discusion" name="categoryP2" class="btn btn-sm btn-outline-secondary" disabled />
-                                                    <label for="discusion"><img src="imagenes/write_button.png" alt="Like" width="20" height="20" href="#Discusion"></label>
-                                                  </li>
-                                                  <li>
-                                                    <input type="radio" id="videojuegos" name="categoryP2" disabled/>
-                                                    <label for="a50"><img src="imagenes/control_button.png" alt="Like" width="20" height="20" href="#VideoJuegos"></label>
-                                                  </li>
-                                                  <li>
-                                                    <input type="radio" id="fotos" name="categoryP2" checked="checked" disabled/>
-                                                    <label for="a75"><img src="imagenes/camera_button.png" alt="Like" width="20" height="20" href="#Fotos"></label>
-                                                  </li>
-                                                  <li>
-                                                    <input type="radio" id="videos" name="categoryP2" disabled/>
-                                                    <label for="a100"><img src="imagenes/video_button.png" alt="Like" width="20" height="20" href="#Videos"></label>
-                                                  </li>
-                                                  <li>
-                                                    <input type="radio" id="archivos" name="categoryP2" disabled/>
-                                                    <label for="other"><img src="imagenes/folder_button.png" alt="Like" width="20" height="20" href="#Archivos" ></label>
-                                                  </li>
-                                                 
-                                                </ul>
+                                                  <ul class="category" >
+                                                            
+                                                        
+                                                            <li> 
+                                                                
+                                                                <input type="radio" id="discusionP" name="categoryP2" checked disabled/>
+                                                                 <label for="discusionP"><img src="imagenes/write_button.png" alt="Like" width="20" height="20" href="#Discusion" id="1" value="1"></label>
+                                                                <%//if (publication.Categoria.equals("1")) {%>
+                                                               
+                                                                <%//}%> 
+                                                                
+                                                               
+                                                                
+                                                            </li>
+                                                        
+                                                            <li>
+                                                                <input type="radio" id="videojuegosP" name="categoryP2" disabled/>
+                                                                <label for="videojuegosP"><img src="imagenes/control_button.png" alt="Like" width="20" height="20" href="#VideoJuegos" id="2" value="2"></label>
+                                                            </li>
+                                                            <li>
+                                                                <input type="radio" id="fotosP" name="categoryP2" disabled/>
+                                                                <label for="fotosP"><img src="imagenes/camera_button.png" alt="Like" width="20" height="20" href="#Fotos" id="3" value="3"></label>
+                                                            </li>
+                                                            <li>
+                                                                <input type="radio" id="videosP" name="categoryP2" disabled/>
+                                                                <label for="videosP"><img src="imagenes/video_button.png" alt="Like" width="20" height="20" href="#Videos" id="4" value="4"></label>
+                                                            </li>
+                                                            <li>
+                                                                <input type="radio" id="archivosP" name="categoryP2" checked="checked" disabled/>
+                                                                <label for="archivosP"><img src="imagenes/folder_button.png" alt="Like" width="20" height="20" href="#Archivos" id="5" value="5"></label>
+                                                            </li>
+
+                                                        </ul>
                                                     </div>
                                                 </div>
                                             </div>
@@ -558,7 +580,7 @@
 
                                     <!--Card publication 1 comment -->
                                     <div class="card-body">
-                                        <p class="card-text"></p>
+                                        <p class="card-text"><%= publication.Content  %></p>
                                         <img src="" alt="Thumbnail" class="center">
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="btn-group">
@@ -576,7 +598,7 @@
                                 
                             </div>
                       <!---->
-<% } %>
+                <% } %>
 <!--PAGINATION -->
                                 <nav class="blog-pagination center">
                                     <button class="btn btn-outline-primary" href="#">1</button>

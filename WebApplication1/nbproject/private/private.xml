@@ -3,13 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Marco%20A%20Aguirre%20G/Desktop/ProjectoWebConGaby/PrograWeb1/WebApplication1/src/java/Classes/Publicacion.java</file>
-            <file>file:/C:/Users/Marco%20A%20Aguirre%20G/Desktop/ProjectoWebConGaby/PrograWeb1/WebApplication1/src/java/Classes/User.java</file>
-            <file>file:/C:/Users/Marco%20A%20Aguirre%20G/Desktop/ProjectoWebConGaby/PrograWeb1/WebApplication1/src/java/Servlets/FancySearch.java</file>
-            <file>file:/C:/Users/Marco%20A%20Aguirre%20G/Desktop/ProjectoWebConGaby/PrograWeb1/WebApplication1/web/DashVacio.jsp</file>
-            <file>file:/C:/Users/Marco%20A%20Aguirre%20G/Desktop/ProjectoWebConGaby/PrograWeb1/WebApplication1/src/java/Servlets/Pagina.java</file>
-            <file>file:/C:/Users/Marco%20A%20Aguirre%20G/Desktop/ProjectoWebConGaby/PrograWeb1/WebApplication1/src/java/Classes/Conexion.java</file>
-            <file>file:/C:/Users/Marco%20A%20Aguirre%20G/Desktop/ProjectoWebConGaby/PrograWeb1/WebApplication1/src/java/Servlets/AddUser.java</file>
+            <file>file:/C:/Users/Fehfers/Documents/GitHub/PrograWeb1/WebApplication1/web/DashVacio.jsp</file>
+            <file>file:/C:/Users/Fehfers/Documents/GitHub/PrograWeb1/WebApplication1/src/java/Classes/Conexion.java</file>
+            <file>file:/C:/Users/Fehfers/Documents/GitHub/PrograWeb1/WebApplication1/src/java/Classes/Publicacion.java</file>
+            <file>file:/C:/Users/Fehfers/Documents/GitHub/PrograWeb1/WebApplication1/src/java/Classes/User.java</file>
+            <file>file:/C:/Users/Fehfers/Documents/GitHub/PrograWeb1/WebApplication1/src/java/Servlets/CheckUser.java</file>
         </group>
     </open-files>
 </project-private>
