@@ -5,15 +5,16 @@
 package Servlets;
 
 import Classes.Conexion;
-import Classes.Publicacion;
+import Classes.User;
 import jakarta.servlet.RequestDispatcher;
+import java.sql.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.sql.SQLException;
+import jakarta.servlet.http.HttpSession;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,7 +22,7 @@ import java.util.logging.Logger;
  *
  * @author Marco A Aguirre G
  */
-public class Pagina extends HttpServlet {
+public class CheckUser extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,22 +32,32 @@ public class Pagina extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.lang.ClassNotFoundException
+     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
-        String Disc = "", Game = "", Pic = "", Vid = "", Arch = "", BeforeDate = "", AfterDate = "";
         response.setContentType("text/html;charset=UTF-8");
+        String CorreoInput = request.getParameter("correoLogInicioSes");
+        String PasswordInput = request.getParameter("passwordLogInicioSes");
+
         try (PrintWriter out = response.getWriter()) {
 
-            String pageParam = request.getParameter("p");
-            int page = (pageParam != null) ? Integer.parseInt(pageParam) : 1;
+            User MyUser = Conexion.VerifyUser(CorreoInput, PasswordInput);
 
-            request.setAttribute("publicaciones", Conexion.ReadPublication(page, "Where deleted!=1"));
+            if (MyUser != null) {
+                SeshSet(request, MyUser);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/Pagina?p=0");
+                dispatcher.forward(request, response);
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("DashVacio.jsp?p=" + page);
-            dispatcher.forward(request, response);
+            } else {
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('Algun dato a sido incorrecto');");
+                out.println("</script>");
+            }
 
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -63,11 +74,10 @@ public class Pagina extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Pagina.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(Pagina.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(CheckUser.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
 
     /**
@@ -83,11 +93,15 @@ public class Pagina extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Pagina.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(Pagina.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(CheckUser.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        try {
+
+        } catch (Exception e) {
+        }
+
     }
 
     /**
@@ -99,5 +113,18 @@ public class Pagina extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    static void SeshSet(HttpServletRequest request, User MyUser) {
+
+        HttpSession MySesh = request.getSession();
+        MySesh.setAttribute("Id",MyUser.Id);
+        MySesh.setAttribute("User", MyUser.User);
+        MySesh.setAttribute("Nombre", MyUser.Nombre);
+        MySesh.setAttribute("Apellido", MyUser.Apellido);
+        MySesh.setAttribute("Correo", MyUser.Correo);
+        MySesh.setAttribute("Password", MyUser.Password);
+        MySesh.setAttribute("BirthDay", MyUser.BirthDay);
+        MySesh.setAttribute("ImageData", MyUser.ImageData);
+    }
 
 }
