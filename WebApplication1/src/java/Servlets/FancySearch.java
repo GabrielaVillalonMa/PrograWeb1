@@ -36,34 +36,31 @@ public class FancySearch extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-           String Dis =request.getParameter("discussion");
-            String Game =request.getParameter("videogames");
-             String Vid =request.getParameter("videos");
-              String Pic =request.getParameter("photos");
-               String File =request.getParameter("files");
-                String Search =request.getParameter("search");
-                 String FechaD =request.getParameter("fechaDESP");
-                  String FechaA =request.getParameter("fechaANTES");
-                  
-                   String pageParam = request.getParameter("p");
-            int page = (pageParam != null) ? Integer.parseInt(pageParam) : 1;
-                  
-                  request.setAttribute("publicaciones", Conexion.SearchPubli(Game, Pic, Vid, File, Dis, page, FechaA, FechaA, Search));
-request.setAttribute("search", Search );
-   request.setAttribute("discussion", Dis );
-   request.setAttribute("videogames", Game );
-   request.setAttribute("video", Vid );
-   request.setAttribute("photos", Pic );
-   request.setAttribute("file", File );
-   request.setAttribute("fechaDesp", FechaD );
-   request.setAttribute("fechaAntes", FechaA );
-   
-   
-                  
-                  
-           RequestDispatcher dispatcher = request.getRequestDispatcher("DashVacio.jsp");
-              dispatcher.forward(request, response);
-                 
+            String Dis = request.getParameter("discussion");
+            String Game = request.getParameter("videogames");
+            String Vid = request.getParameter("videos");
+            String Pic = request.getParameter("photos");
+            String File = request.getParameter("files");
+            String Search = request.getParameter("search");
+            String FechaD = request.getParameter("fechaDESP");
+            String FechaA = request.getParameter("fechaANTES");
+
+            String pageParam = request.getParameter("p");
+            int page = (pageParam != null) ? Integer.parseInt(pageParam) : 0;
+
+            request.setAttribute("publicaciones", Conexion.SearchPubli(Game, Pic, Vid, File, Dis, page, FechaA, FechaA, Search));
+            request.setAttribute("search", Search);
+            request.setAttribute("discussion", Dis);
+            request.setAttribute("videogames", Game);
+            request.setAttribute("video", Vid);
+            request.setAttribute("photos", Pic);
+            request.setAttribute("file", File);
+            request.setAttribute("fechaDesp", FechaD);
+            request.setAttribute("fechaAntes", FechaA);
+
+            RequestDispatcher dispatcher = request.getRequestDispatcher("DashVacio.jsp");
+            dispatcher.forward(request, response);
+
         }
     }
 

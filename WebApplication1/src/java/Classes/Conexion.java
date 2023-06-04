@@ -125,15 +125,15 @@ public class Conexion {
 
     public static List<Publicacion> SearchPubli(String Game, String Pic, String Vid, String File, String Conv, int Multi, String FechaB, String FechaA, String Like) throws ClassNotFoundException, SQLException {
         List<Publicacion> publications = new ArrayList<>();
-        String Where = "Where deleted1!=1 ";
+        String Where = "Where deleted!=1 ";
         String In = "";
         String Between = "";
         String This = "";
-
-        if (Like != "") {
-
+System.out.print(Like);
+        if (Like != null) {
+ if (Like != "") {
             This = "Contenido LIKE" + Like + " or Titulo LIKE" + Like;
-
+ }
         }
 
         if (!"".equals(FechaB)) {
@@ -151,10 +151,10 @@ public class Conexion {
             Between = "DatePublic =<" + FechaA;
 
         }
-        if (Game != "") {
+        if (Game != null) {
             In += Game;
         }
-        if (Pic != "") {
+        if (Pic != null) {
             if (In != "") {
                 In += "," + Pic;
             } else {
@@ -162,7 +162,7 @@ public class Conexion {
                 In += Pic;
             }
         }
-        if (Vid != "") {
+        if (Vid != null) {
             if (In != "") {
                 In += "," + Vid;
             } else {
@@ -170,23 +170,23 @@ public class Conexion {
                 In += Vid;
             }
         }
-        if (File != "") {
-            if (In != "") {
+        if (File != null) {
+            if (In !="") {
                 In += "," + File;
             } else {
 
                 In += File;
             }
         }
-        if (Conv != "") {
+        if (Conv != null) {
             if (In != "") {
                 In += "," + Conv;
             } else {
 
                 In += Conv;
-            }
+            }   
         }
-
+     
         if (In != "") {
             In = "And Id_Cat IN (" + In + ")";
             if (Between != "") {
@@ -197,7 +197,10 @@ public class Conexion {
         Where += In + Between + This;
 
         try (Connection conn = Connect()) {
-            PreparedStatement stm = conn.prepareStatement("Select * from tbl_publicacion " + Where + " Limit " + Multi * 10 + ",10");
+            
+            String Command="Select * from tbl_publicacion " + Where + " Limit " + Multi * 10 + ",10";
+             System.out.println(Command);
+            PreparedStatement stm = conn.prepareStatement(Command);
             ResultSet rs = stm.executeQuery();
             int i = 0;
 

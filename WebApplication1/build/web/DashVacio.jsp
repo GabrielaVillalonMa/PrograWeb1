@@ -322,7 +322,7 @@
                     </h6>
                     <ul class="nav flex-column mb-2">
 
-                    <form action="FancySearch" method="get" >
+                    <form action="FancySearch" method="post" >
   
                         <!-- Likes/Dislikes -->
                        
@@ -335,7 +335,7 @@
                             </a>
                             <div class="row">
                                 <div class="col-md-7  container-card">
-                                    <form>
+                                    
                                         <input type="checkbox" id="discussion" name="discussion" value="1">
                                         <label for="discussion"> Discusión</label><br>
                                         <input type="checkbox" id="videogames" name="videogames" value="2">
@@ -346,7 +346,7 @@
                                         <label for="videos"> Videos</label><br>
                                         <input type="checkbox" id="files" name="files" value="5">
                                         <label for="files"> Archivos</label>
-                                    </form>
+                         
 
 
                                 </div>
@@ -363,7 +363,7 @@
 
                             <div class="row">
                                 <div class="col-md-9  container-card">
-                                    <form>
+                                    
 
                                         <label for="fechaANTES">Antes de: </label><br>
                                         <input  class="form-control" type="date" id="fechaANTES" name="fechaANTES">
@@ -379,7 +379,7 @@
                                                 Ingrese una fecha valida.
                                             </div>
 
-                                    </form>
+                                
 
                                 </div>
                             </div>
