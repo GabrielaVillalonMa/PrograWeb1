@@ -129,28 +129,14 @@ public class Conexion {
         String In = "";
         String Between = "";
         String This = "";
-System.out.print(Like);
+
         if (Like != null) {
  if (Like != "") {
-            This = "Contenido LIKE" + Like + " or Titulo LIKE" + Like;
+            This = " AND Contenido LIKE '%" + Like + "%' or Titulo LIKE '%" + Like+"%'";
  }
         }
 
-        if (!"".equals(FechaB)) {
-
-            Between = "DatePublic =>" + FechaB;
-
-        }
-        if (!"".equals(FechaA)) {
-            if (!"".equals(Between)) {
-
-                Between += " AND ";
-
-            }
-
-            Between = "DatePublic =<" + FechaA;
-
-        }
+    
         if (Game != null) {
             In += Game;
         }
@@ -187,8 +173,33 @@ System.out.print(Like);
             }   
         }
      
+      
+            if (!"".equals(FechaB)) {
+
+                  if (In=="") {
+         Between +="And";   
+            
+        }
+            Between = " DatePublic >= '" + FechaB+"'";
+
+        }
+        if (!"".equals(FechaA)) {
+            if (!"".equals(Between)) {
+
+                Between += " AND ";
+
+            }
+
+            Between += " DatePublic <= '" + FechaA+"'";
+
+        }
+        
+        
+        
+        
+        
         if (In != "") {
-            In = "And Id_Cat IN (" + In + ")";
+            In = " And Id_Cat IN (" + In + ")";
             if (Between != "") {
                 Between = "And (" + Between + ")";
 
@@ -200,7 +211,7 @@ System.out.print(Like);
             
             String Command="Select * from tbl_publicacion " + Where + " Limit " + Multi * 10 + ",10";
              System.out.println(Command);
-            PreparedStatement stm = conn.prepareStatement(Command);
+         PreparedStatement stm = conn.prepareStatement(Command);
             ResultSet rs = stm.executeQuery();
             int i = 0;
 

@@ -47,8 +47,8 @@ public class FancySearch extends HttpServlet {
 
             String pageParam = request.getParameter("p");
             int page = (pageParam != null) ? Integer.parseInt(pageParam) : 0;
-
-            request.setAttribute("publicaciones", Conexion.SearchPubli(Game, Pic, Vid, File, Dis, page, FechaA, FechaA, Search));
+System.out.print(Search);
+            request.setAttribute("publicaciones", Conexion.SearchPubli(Game, Pic, Vid, File, Dis, page, FechaD, FechaA, Search));
             request.setAttribute("search", Search);
             request.setAttribute("discussion", Dis);
             request.setAttribute("videogames", Game);
