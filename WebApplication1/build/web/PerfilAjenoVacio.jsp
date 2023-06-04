@@ -381,101 +381,75 @@
 
                 </div>
                 <br><br>
-                                <!-- Publicado-->
-                                <div class="container-card">
-                                <div class="card mb-4 box-shadow">
+                             <!-- Publicado-->
+                        <div class="container-card">
+                            
 
+                            <div class="card mb-4 box-shadow">
+                                <!-- Card Publication 2 -->
+                                <div class="container-md align-items-center">
+                                    <div class="row">
+                                        <div class="col-sm-2">
+                                            <form action="PerfilAjenoVacio" method="get">
+                                                <button class="btn">
+                                                    <img src="" class="round_img" c lass="a_center" alt="Profile Picture" width="72" height="72">
+                                                </button>
+                                            </form>
+                                        </div>
 
-                                    <!-- Card Upper -->
-                                    <div class="container-md align-items-center">
-                                        <div class="row">
-                                            <div class="col-sm-2">
-                                                <form action="PerfilAjenoVacio.jsp" method="get">
-                                     
-                                                    <button class="btn">
-                                                        <img  src="data:image/jpeg;base64, <%= session.getAttribute("ImageData") %>"  class="round_img" c lass="a_center" alt="Profile Picture" width="72" height="72"  >
-                                                    </button>
-                                                </form>
-                                            </div>
-
-                                            <div class="col-md-10">
-                                                <p class="card-text"><b><%= session.getAttribute("Nombre")  %> <%= session.getAttribute("Apellido")  %> </b><br>
-                                            <small class="text">@<%= session.getAttribute("User") %> </small></p>
-                                                <div class="container">
-                                                    <div class="row justify-content-center">
-<!--                                                        <div class="btn-group">
-                                                            <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/write_button.png" alt="Like" width="20" height="20"></button>
-                                                            <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/control_button.png" alt="Like" width="20" height="20"></button>
-                                                            <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/camera_button.png" alt="Like" width="20" height="20"></button>
-                                                            <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/video_button.png" alt="Like" width="20" height="20"></button>
-                                                            <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/folder_button.png" alt="Like" width="20" height="20"></button>
-                                                        </div>-->
-                                                     <ul class="category" >
-                                                  <li>
-                                                    <input type="radio" id="discusionP" name="categoryP" class="btn btn-sm btn-outline-secondary" disabled/>
-                                                    <label for="discusion"><img src="imagenes/write_button.png" alt="Like" width="20" height="20" href="#Discusion" id="1"></label>
-                                                  </li>
-                                                  <li>
-                                                    <input type="radio" id="videojuegosP" name="categoryP" disabled/>
-                                                    <label for="videojuegos"><img src="imagenes/control_button.png" alt="Like" width="20" height="20" href="#VideoJuegos" id="2"></label>
-                                                  </li>
-                                                  <li>
-                                                    <input type="radio" id="fotosP" name="categoryP" disabled/>
-                                                    <label for="a75"><img src="imagenes/camera_button.png" alt="Like" width="20" height="20" href="#Fotos" id="3"></label>
-                                                  </li>
-                                                  <li>
-                                                    <input type="radio" id="videosP" name="categoryP" disabled/>
-                                                    <label for="a100"><img src="imagenes/video_button.png" alt="Like" width="20" height="20" href="#Videos" id="4"></label>
-                                                  </li>
-                                                  <li>
-                                                    <input type="radio" id="archivosP" name="categoryP" checked="checked" disabled/>
-                                                    <label for="other"><img src="imagenes/folder_button.png" alt="Like" width="20" height="20" href="#Archivos" id="5"></label>
-                                                  </li>
-                                                 
-                                                </ul>
+                                        <div class="col-md-10">
+                                            <p class="card-text">
+                                                <b>Otro Nombre de Usuario</b><br>
+                                                <small class="text">@other-username</small>
+                                            </p>
+                                            <div class="container">
+                                                <div class="row justify-content-center">
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/write_button.png" alt="Like" width="20" height="20"></button>
+                                                        <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/control_button.png" alt="Like" width="20" height="20"></button>
+                                                        <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/camera_button.png" alt="Like" width="20" height="20"></button>
+                                                        <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/video_button.png" alt="Like" width="20" height="20"></button>
+                                                        <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/folder_button.png" alt="Like" width="20" height="20"></button>
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
 
                                     </div>
 
-                                    <!--Card publication 1 comment -->
-                                    <div class="card-body">
-                                        <p class="card-text"></p>
-                                        <img src="" alt="Thumbnail" class="center">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/like_button.png" alt="Like" width="20" height="20"></button>
-                                                <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/dislike_button.png" alt="Dislike" width="20" height="20"></button>
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">Comentarios</button>
-                                            </div>
-                                            <small class="text-muted"></small>
-                                        </div>
-                                    </div>
-                                    
-                                    
-                                    
                                 </div>
+                                <div class="card-body">
+                                    <p class="card-text"></p>
 
-
-
-                                <!--PAGINATION -->
-                                <nav class="blog-pagination center">
-                                    <button class="btn btn-outline-primary" href="#">1</button>
-                                    <button class="btn btn-outline-primary" href="#">2</button>
-                                    <button class="btn btn-outline-primary" href="#">3</button>
-                                    <button class="btn btn-outline-primary" href="#">4</button>
-                                    <button class="btn btn-outline-primary" href="#">5</button>
-                                    <button class="btn btn-outline-primary" href="#">6</button>
-                                    <button class="btn btn-outline-primary" href="#">7</button>
-                                    <button class="btn btn-outline-primary" href="#">8</button>
-                                    <button class="btn btn-outline-primary" href="#">9</button>
-                                    <button class="btn btn-outline-primary" href="#">10</button>
-                                    
-                                </nav>
+                                <!--Card publication 2 comment -->
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/like_button.png" alt="Like" width="20" height="20"></button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/dislike_button.png" alt="Dislike" width="20" height="20"></button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Comentarios</button>
+                                        </div>
+                                        <small class="text-muted" id="publication-time"></small>
+                                    </div>
+                                </div>
                             </div>
+
+                       
+
+                            <!--PAGINATION -->
+                            <nav class="blog-pagination center">
+                                <a class="btn btn-outline-primary" href="#">1</a>
+                                <a class="btn btn-outline-primary" href="#">2</a>
+                                <a class="btn btn-outline-primary" href="#">3</a>
+                                <a class="btn btn-outline-primary" href="#">4</a>
+                                <a class="btn btn-outline-primary" href="#">5</a>
+                                <a class="btn btn-outline-primary" href="#">6</a>
+                                <a class="btn btn-outline-primary" href="#">7</a>
+                                <a class="btn btn-outline-primary" href="#">8</a>
+                                <a class="btn btn-outline-primary" href="#">9</a>
+                                <a class="btn btn-outline-primary" href="#">10</a>
+                                
+                            </nav>
+                        </div>
                   <!---->
 
 

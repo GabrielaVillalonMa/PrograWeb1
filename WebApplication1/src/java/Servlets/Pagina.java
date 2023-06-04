@@ -43,8 +43,10 @@ public class Pagina extends HttpServlet {
 
             request.setAttribute("publicaciones", Conexion.ReadPublication(page, "Where deleted!=1"));
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("DashVacio.jsp?p=" + page);
-            dispatcher.forward(request, response);
+            
+            RequestDispatcher dispatcher = request.getRequestDispatcher("DashVacio.jsp");
+              dispatcher.forward(request, response);
+            
 
         }
     }

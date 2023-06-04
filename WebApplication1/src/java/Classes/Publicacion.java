@@ -13,12 +13,12 @@ import java.util.Base64;
  */
 public class Publicacion {
     public String IdPublicacion,Title,Content,Media,DatePublic,Categoria;
-    public User Dueno;
+    public User Dueño;
     public boolean Deleted;
 
-    public Publicacion(String IdPublicacion, User Dueno, String Title,String Categoria, String Content, String Media, String DatePublic, boolean Deleted) {
+    public Publicacion(String IdPublicacion, User Dueño, String Title,String Categoria, String Content, String Media, String DatePublic, boolean Deleted) {
         this.IdPublicacion = IdPublicacion;
-        this.Dueno = Dueno;
+        this.Dueño = Dueño;
         this.Title = Title;
         this.Content = Content;
         this.Media = Media;
@@ -29,7 +29,7 @@ public class Publicacion {
     
     public Publicacion(ResultSet rs) throws SQLException, ClassNotFoundException {
         this.IdPublicacion = rs.getString("Id_Post");
-        this.Dueno = Conexion.UserById(rs.getInt("Id_User"));
+        this.Dueño = Conexion.UserById(rs.getInt("Id_User"));
         this.Title = rs.getString("Titulo");
         this.Content = rs.getString("Contenido");
          byte[] imageData = rs.getBytes("Media");
