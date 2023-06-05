@@ -452,62 +452,62 @@
                             <!-- Publicar-->
                             <div class="container-card">
                                 <div class="card mb-4 box-shadow" >
-                                    <form action="CrearPubli" method="post">
+                                    <form action="CrearPubli" method="post" enctype="multipart/form-data">
 
-                                    <!-- Card Upper -->
-                                    <div class="container-md align-items-center" >
-                                        <div class="row">
-                                            <div class="col-sm-2" >
-                                                
+                                        <!-- Card Upper -->
+                                        <div class="container-md align-items-center" >
+                                            <div class="row">
+                                                <div class="col-sm-2" >
+
 
                                                     <button action="PerfilPropioVacio.jsp"class="btn">
                                                         <img  src="data:image/jpeg;base64, <%= session.getAttribute("ImageData") %>"  class="round_img" c lass="a_center" alt="Profile Picture" width="72" height="72"  >
                                                     </button>
-                                                
-                                            </div>
 
-                                            <div class="col-md-10">
-                                                <p class="card-text"><b><%= session.getAttribute("Nombr")  %> <%= session.getAttribute("Apellido")  %> </b><br>
-                                                    <small class="text">@<%= session.getAttribute("User") %> </small></p>
-                                                <div class="container">
-                                                    <div class="row justify-content-center">
+                                                </div>
 
-                                                            
-                                                        <ul class="category">
-                                                            <li>
-                                                                <input type="radio" id="Pdiscusion" name="CatInput" value="1" />
-                                                                <label for="Pdiscusion"><img src="imagenes/write_button.png" alt="Like" width="20" height="20" href="#Discusion"></label>
-                                                            </li>
-                                                            <li>
-                                                                <input type="radio" id="Pvideojuegos" name="CatInput" value="2" />
-                                                                <label for="Pvideojuegos"><img src="imagenes/control_button.png" alt="Like" width="20" height="20" href="#VideoJuegos"></label>
-                                                            </li>
-                                                            <li>
-                                                                <input type="radio" id="Pfotos" name="CatInput" checked="checked" value="3" />
-                                                                <label for="Pfotos"><img src="imagenes/camera_button.png" alt="Like" width="20" height="20" href="#Fotos"></label>
-                                                            </li>
-                                                            <li>
-                                                                <input type="radio" id="Pvideos" name="CatInput" value="4" />
-                                                                <label for="Pvideos"><img src="imagenes/video_button.png" alt="Like" width="20" height="20" href="#Videos"></label>
-                                                            </li>
-                                                            <li>
-                                                                <input type="radio" id="Parchivos" name="CatInput" value="5" />
-                                                                <label for="Parchivos"><img src="imagenes/folder_button.png" alt="Like" width="20" height="20" href="#Archivos" ></label>
-                                                            </li>
-
-                                                        </ul>
+                                                <div class="col-md-10">
+                                                    <p class="card-text"><b><%= session.getAttribute("Nombr")  %> <%= session.getAttribute("Apellido")  %> </b><br>
+                                                        <small class="text">@<%= session.getAttribute("User") %> </small></p>
+                                                    <div class="container">
+                                                        <div class="row justify-content-center">
 
 
+                                                            <ul class="category">
+                                                                <li>
+                                                                    <input type="radio" id="Pdiscusion" name="CatInput" value="1" />
+                                                                    <label for="Pdiscusion"><img src="imagenes/write_button.png" alt="Like" width="20" height="20" href="#Discusion"></label>
+                                                                </li>
+                                                                <li>
+                                                                    <input type="radio" id="Pvideojuegos" name="CatInput" value="2" />
+                                                                    <label for="Pvideojuegos"><img src="imagenes/control_button.png" alt="Like" width="20" height="20" href="#VideoJuegos"></label>
+                                                                </li>
+                                                                <li>
+                                                                    <input type="radio" id="Pfotos" name="CatInput" checked="checked" value="3" />
+                                                                    <label for="Pfotos"><img src="imagenes/camera_button.png" alt="Like" width="20" height="20" href="#Fotos"></label>
+                                                                </li>
+                                                                <li>
+                                                                    <input type="radio" id="Pvideos" name="CatInput" value="4" />
+                                                                    <label for="Pvideos"><img src="imagenes/video_button.png" alt="Like" width="20" height="20" href="#Videos"></label>
+                                                                </li>
+                                                                <li>
+                                                                    <input type="radio" id="Parchivos" name="CatInput" value="5" />
+                                                                    <label for="Parchivos"><img src="imagenes/folder_button.png" alt="Like" width="20" height="20" href="#Archivos" ></label>
+                                                                </li>
+
+                                                            </ul>
+
+
+                                                        </div>
                                                     </div>
                                                 </div>
+
                                             </div>
 
                                         </div>
 
-                                    </div>
+                                        <!--input buttons -->
 
-                                    <!--input buttons -->
-                                   
                                         <div class="form-group">
                                             <!-- <label for="comment">Comment:</label> -->
                                             <textarea class="form-control" rows="5" placeholder="Write a bit?" id="comment" name="Pcontenido"></textarea>

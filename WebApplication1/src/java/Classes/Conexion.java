@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class Conexion {
 
-    final static String MyUrl = "jdbc:mysql://localhost:3306/mydatabase", MyRoot = "root", MyPassword = "lolcats23";
+    final static String MyUrl = "jdbc:mysql://localhost:3306/mydatabase", MyRoot = "root", MyPassword = "Maag201200.";
 
     private static Connection Connect() throws ClassNotFoundException, SQLException {
 
@@ -104,7 +104,11 @@ public class Conexion {
     
         try (Connection conn = Connect()) {
 
-            PreparedStatement stm = conn.prepareStatement("INSERT INTO tbl_publicacion ( Id_User, Media, Contenido, DatePublic, deleted,Id_Cat) VALUES ( "+User+"," +Imagen+", "+Contenido+", Now(), '0',"+Categoria+");");
+            
+            String Command=  "INSERT INTO tbl_publicacion ( Id_User, Media, Contenido, DatePublic, deleted,Id_Cat) VALUES ( "+User+"," +Imagen+", "+Contenido+", Now(), '0',"+Categoria+");";
+            System.out.println(Command);
+            
+            PreparedStatement stm = conn.prepareStatement(Command);
           stm.executeUpdate();
            
 

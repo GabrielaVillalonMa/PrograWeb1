@@ -40,12 +40,17 @@ public class CrearPubli extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
     String Categoria = request.getParameter("CatInput");
     String  Contenido = request.getParameter("Pcontenido");
-    Part filePart = request.getPart("imageFile");
-    InputStream Imagen = filePart.getInputStream();
+    
+    
     HttpSession session = request.getSession();
 String UserID = (String) session.getAttribute("Id");
+Part filePart = request.getPart("imageFile");
+            if (filePart != null) {
+                InputStream Imagen = filePart.getInputStream();
+                Conexion.RegistPublic(UserID, Categoria, Imagen, Contenido);
+            }else  {Conexion.RegistPublic(UserID, Categoria, null, Contenido);}
 
-Conexion.RegistPublic(UserID, Categoria, Imagen, Contenido);
+
  RequestDispatcher dispatcher = request.getRequestDispatcher("/Pagina?p=0");
                 dispatcher.forward(request, response);
 
