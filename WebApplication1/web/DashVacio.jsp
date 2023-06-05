@@ -471,27 +471,27 @@
                                                     <small class="text">@<%= session.getAttribute("User") %> </small></p>
                                                 <div class="container">
                                                     <div class="row justify-content-center">
-                                                       
+
 
                                                         <ul class="category">
                                                             <li>
-                                                                <input type="radio" id="Pdiscusion" name="Pdiscusion" />
+                                                                <input type="radio" id="Pdiscusion" name="CatInput" value="1" />
                                                                 <label for="Pdiscusion"><img src="imagenes/write_button.png" alt="Like" width="20" height="20" href="#Discusion"></label>
                                                             </li>
                                                             <li>
-                                                                <input type="radio" id="Pvideojuegos" name="Pvideojuegos" />
+                                                                <input type="radio" id="Pvideojuegos" name="CatInput" value="2" />
                                                                 <label for="Pvideojuegos"><img src="imagenes/control_button.png" alt="Like" width="20" height="20" href="#VideoJuegos"></label>
                                                             </li>
                                                             <li>
-                                                                <input type="radio" id="Pfotos" name="Pfotos" checked="checked" />
+                                                                <input type="radio" id="Pfotos" name="CatInput" checked="checked" value="3" />
                                                                 <label for="Pfotos"><img src="imagenes/camera_button.png" alt="Like" width="20" height="20" href="#Fotos"></label>
                                                             </li>
                                                             <li>
-                                                                <input type="radio" id="Pvideos" name="Pvideos" />
+                                                                <input type="radio" id="Pvideos" name="CatInput" value="4" />
                                                                 <label for="Pvideos"><img src="imagenes/video_button.png" alt="Like" width="20" height="20" href="#Videos"></label>
                                                             </li>
                                                             <li>
-                                                                <input type="radio" id="Parchivos" name="Parchivos" />
+                                                                <input type="radio" id="Parchivos" name="CatInput" value="5" />
                                                                 <label for="Parchivos"><img src="imagenes/folder_button.png" alt="Like" width="20" height="20" href="#Archivos" ></label>
                                                             </li>
 
@@ -507,7 +507,7 @@
                                     </div>
 
                                     <!--input buttons -->
-                                    <form>
+                                    <form action="CrearPubli" method="post">
                                         <div class="form-group">
                                             <!-- <label for="comment">Comment:</label> -->
                                             <textarea class="form-control" rows="5" placeholder="Write a bit?" id="comment" name="Pcontenido"></textarea>
@@ -549,10 +549,10 @@
                                                 <div class="container">
                                                     <div class="row justify-content-center">
                                                         <ul class="category" >
-                                                    
+
                                                             <% category = publication.Categoria;%>
-                                                           
-                                                         <% if (category== 1) { %>
+
+                                                            <% if (category== 1) { %>
                                                             <li  >
                                                                 <input  type="radio" id="discusionP" checked="checked" disabled/>
                                                                 <label for="discusionP"><img  src="imagenes/write_button.png" alt="Like" width="20" height="20" ></label>
@@ -575,7 +575,7 @@
                                                             </li>
                                                             <%}%>
 
-                                                          <% if (category==3) { %>
+                                                            <% if (category==3) { %>
                                                             <li >
                                                                 <input type="radio" id="fotosP" checked="checked" disabled/>
                                                                 <label   for="fotosP"><img src="imagenes/camera_button.png" alt="Like" width="20" height="20" href="#Fotos" id="3" value="3"></label>
@@ -599,7 +599,7 @@
                                                             </li>
                                                             <%}%>
 
-                                                           <% if(category ==5) { %>
+                                                            <% if(category ==5) { %>
 
                                                             <li  >
                                                                 <input  type="radio" id="archivosP" checked="checked" disabled/>
@@ -646,26 +646,27 @@
                             </div>
                             <!---->
                             <% } %>
-                            
-                            
-                            <!--PAGINATION -->
-                            
-                            <nav class="blog-pagination center">
-                                <button class="btn btn-outline-primary" href="#">1</button>
-                                <button class="btn btn-outline-primary" href="#">2</button>
-                                <button class="btn btn-outline-primary" href="#">3</button>
-                                <button class="btn btn-outline-primary" href="#">4</button>
-                                <button class="btn btn-outline-primary" href="#">5</button>
-                                <button class="btn btn-outline-primary" href="#">6</button>
-                                <button class="btn btn-outline-primary" href="#">7</button>
-                                <button class="btn btn-outline-primary" href="#">8</button>
-                                <button class="btn btn-outline-primary" href="#">9</button>
-                                <button class="btn btn-outline-primary" href="#">10</button>
 
-                            </nav>
-                            
-                            
-                            
+
+                            <!--PAGINATION -->
+
+
+                            <nav class="blog-pagination center">
+                                <%  
+   String paginacionStr = (String) request.getAttribute("Paginas");
+   int paginacion = Integer.parseInt(paginacionStr);                             
+
+                                %> 
+
+                                <nav class="blog-pagination center">
+                                    <% for (int i=0; i<paginacion; i++) { %>
+                                    <!-- <button class="btn btn-outline-primary" href="#">1</button> -->
+                                    <td><a href="Pagina?p=<%=i%>" class="btn btn-outline-primary"><%=i + 1%></a></td> 
+                                        <% } %>
+                                </nav>
+
+
+
 
 
                         </div> 

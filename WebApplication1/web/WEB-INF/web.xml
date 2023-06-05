@@ -16,6 +16,10 @@
         <servlet-name>ExitAccount</servlet-name>
         <servlet-class>Servlets.ExitAccount</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CrearPubli</servlet-name>
+        <servlet-class>Servlets.CrearPubli</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CheckUser</servlet-name>
         <url-pattern>/CheckUser</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>ExitAccount</servlet-name>
         <url-pattern>/ExitAccount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CrearPubli</servlet-name>
+        <url-pattern>/CrearPubli</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>RegistLog.jsp</welcome-file>

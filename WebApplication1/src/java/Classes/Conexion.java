@@ -4,6 +4,7 @@
  */
 package Classes;
 
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -18,7 +19,7 @@ import java.util.List;
  */
 public class Conexion {
 
-    final static String MyUrl = "jdbc:mysql://localhost:3306/mydatabase", MyRoot = "root", MyPassword = "lolcats23";
+    final static String MyUrl = "jdbc:mysql://localhost:3306/mydatabase", MyRoot = "root", MyPassword = "Maag201200.";
 
     private static Connection Connect() throws ClassNotFoundException, SQLException {
 
@@ -98,6 +99,21 @@ public class Conexion {
 
         return 0;
 
+    }
+    public static void RegistPublic(String User,String Categoria,InputStream Imagen,String Contenido) throws ClassNotFoundException, SQLException{
+    
+        try (Connection conn = Connect()) {
+
+            PreparedStatement stm = conn.prepareStatement("INSERT INTO tbl_publicacion ( Id_User, Media, Contenido, DatePublic, deleted,Id_Cat) VALUES ( "+User+"," +Imagen+", "+Contenido+", Now(), '0',"+Categoria+");");
+          stm.executeUpdate();
+           
+
+        }
+    
+    
+    
+    
+    
     }
 
     public static List<Publicacion> ReadPublication(int Multi, String Where) throws ClassNotFoundException, SQLException {
