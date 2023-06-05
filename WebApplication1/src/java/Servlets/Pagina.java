@@ -40,8 +40,9 @@ public class Pagina extends HttpServlet {
 
             String pageParam = request.getParameter("p");
             int page = (pageParam != null) ? Integer.parseInt(pageParam) : 1;
-
+            int pager = Conexion.GetPagination();
             request.setAttribute("publicaciones", Conexion.ReadPublication(page, "Where deleted!=1"));
+            request.setAttribute("Paginas", ""+pager);
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("DashVacio.jsp?p=" + page);
             dispatcher.forward(request, response);

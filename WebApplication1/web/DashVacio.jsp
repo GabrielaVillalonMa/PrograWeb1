@@ -329,7 +329,10 @@
             <%
                List<Publicacion> publications = new ArrayList<>();
                publications = (List<Publicacion>) request.getAttribute("publicaciones");
-   int category=0;
+                int category=0;
+                
+            List<User> usuarios = new ArrayList<>();
+               usuarios = (List<User>) request.getAttribute("usuarioActual");
 
             %>
 
@@ -468,34 +471,28 @@
                                                     <small class="text">@<%= session.getAttribute("User") %> </small></p>
                                                 <div class="container">
                                                     <div class="row justify-content-center">
-                                                        <!--                                            //     <div class="btn-group">
-                                                                                                        <input type="radio" class="btn btn-sm btn-outline-secondary"><img src="imagenes/write_button.png" alt="Like" width="20" height="20" href="#Discusion" id="1"></input>
-                                                                                                        <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/control_button.png" alt="Like" width="20" height="20" href="#VideoJuegos" id="2"></button>
-                                                                                                        <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/camera_button.png" alt="Like" width="20" height="20" href="#Fotos" id="3"></button>
-                                                                                                        <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/video_button.png" alt="Like" width="20" height="20" href="#Videos" id="4"></button>
-                                                                                                        <button type="button" class="btn btn-sm btn-outline-secondary"><img src="imagenes/folder_button.png" alt="Like" width="20" height="20" href="#Archivos" id="5"></button>
-                                                                                                        </div>-->
+                                                       
 
                                                         <ul class="category">
                                                             <li>
-                                                                <input type="radio" id="discusion" name="categoryP1" />
-                                                                <label for="discusion"><img src="imagenes/write_button.png" alt="Like" width="20" height="20" href="#Discusion"></label>
+                                                                <input type="radio" id="Pdiscusion" name="Pdiscusion" />
+                                                                <label for="Pdiscusion"><img src="imagenes/write_button.png" alt="Like" width="20" height="20" href="#Discusion"></label>
                                                             </li>
                                                             <li>
-                                                                <input type="radio" id="videojuegos" name="categoryP1" />
-                                                                <label for="videojuegos"><img src="imagenes/control_button.png" alt="Like" width="20" height="20" href="#VideoJuegos"></label>
+                                                                <input type="radio" id="Pvideojuegos" name="Pvideojuegos" />
+                                                                <label for="Pvideojuegos"><img src="imagenes/control_button.png" alt="Like" width="20" height="20" href="#VideoJuegos"></label>
                                                             </li>
                                                             <li>
-                                                                <input type="radio" id="fotos" name="categoryP1" checked="checked" />
-                                                                <label for="fotos"><img src="imagenes/camera_button.png" alt="Like" width="20" height="20" href="#Fotos"></label>
+                                                                <input type="radio" id="Pfotos" name="Pfotos" checked="checked" />
+                                                                <label for="Pfotos"><img src="imagenes/camera_button.png" alt="Like" width="20" height="20" href="#Fotos"></label>
                                                             </li>
                                                             <li>
-                                                                <input type="radio" id="videos" name="categoryP1" />
-                                                                <label for="videos"><img src="imagenes/video_button.png" alt="Like" width="20" height="20" href="#Videos"></label>
+                                                                <input type="radio" id="Pvideos" name="Pvideos" />
+                                                                <label for="Pvideos"><img src="imagenes/video_button.png" alt="Like" width="20" height="20" href="#Videos"></label>
                                                             </li>
                                                             <li>
-                                                                <input type="radio" id="archivos" name="categoryP1" />
-                                                                <label for="archivos"><img src="imagenes/folder_button.png" alt="Like" width="20" height="20" href="#Archivos" ></label>
+                                                                <input type="radio" id="Parchivos" name="Parchivos" />
+                                                                <label for="Parchivos"><img src="imagenes/folder_button.png" alt="Like" width="20" height="20" href="#Archivos" ></label>
                                                             </li>
 
                                                         </ul>
@@ -513,7 +510,7 @@
                                     <form>
                                         <div class="form-group">
                                             <!-- <label for="comment">Comment:</label> -->
-                                            <textarea class="form-control" rows="5" placeholder="Write a bit?" id="comment"></textarea>
+                                            <textarea class="form-control" rows="5" placeholder="Write a bit?" id="comment" name="Pcontenido"></textarea>
                                         </div>
                                         <input class="btn btn-primary btn-sm btn-block" type="submit" id="publicar" value="Publicar" href="DashVacio.jsp">
                                         <input type="file" id="myfile" name="myfile">
@@ -552,55 +549,52 @@
                                                 <div class="container">
                                                     <div class="row justify-content-center">
                                                         <ul class="category" >
-<% category = publication.Categoria;%>
+                                                    
+                                                            <% category = publication.Categoria;%>
                                                            
-                                                         <% if (category==1) { %>
+                                                         <% if (category== 1) { %>
                                                             <li  >
-
-                                                                <input  type="radio" id="discusionP" name="categoryP2" checked="checked" disabled/>
-                                                                <label for="discusionP"><img  src="imagenes/write_button.png" alt="Like" width="20" height="20" href="#Discusion" id="1" value="1"></label>
-
+                                                                <input  type="radio" id="discusionP" checked="checked" disabled/>
+                                                                <label for="discusionP"><img  src="imagenes/write_button.png" alt="Like" width="20" height="20" ></label>
                                                             </li>
                                                             <%}else{%>                    
                                                             <li> 
-
-                                                                <input type="radio" id="discusionP" name="categoryP2"  disabled/>
-                                                                <label for="discusionP"><img  src="imagenes/write_button.png" alt="Like" width="20" height="20" href="#Discusion" id="1" value="1"></label>
-
+                                                                <input type="radio" id="discusionP"   disabled/>
+                                                                <label for="discusionP"><img  src="imagenes/write_button.png" alt="Like" width="20" height="20" ></label>
                                                             </li>
                                                             <%}%>
                                                             <% if(category==2) { %>
                                                             <li class="selected">
-                                                                <input   type="radio" id="videojuegosP" name="categoryP2" checked="checked" disabled/>
+                                                                <input   type="radio" id="videojuegosP"checked="checked" disabled/>
                                                                 <label   for="videojuegosP"><img src="imagenes/control_button.png" alt="Like" width="20" height="20"  href="#VideoJuegos" id="2" value="2"></label>
                                                             </li>
                                                             <%}else{%> 
                                                             <li>
-                                                                <input type="radio" id="videojuegosP" name="categoryP2" disabled/>
+                                                                <input type="radio" id="videojuegosP"  disabled/>
                                                                 <label for="videojuegosP"><img src="imagenes/control_button.png" alt="Like" width="20" height="20" href="#VideoJuegos" id="2" value="2"></label>
                                                             </li>
                                                             <%}%>
 
                                                           <% if (category==3) { %>
                                                             <li >
-                                                                <input type="radio" id="fotosP" name="categoryP2" checked="checked" disabled/>
+                                                                <input type="radio" id="fotosP" checked="checked" disabled/>
                                                                 <label   for="fotosP"><img src="imagenes/camera_button.png" alt="Like" width="20" height="20" href="#Fotos" id="3" value="3"></label>
                                                             </li>
                                                             <%}else{%> 
                                                             <li>
-                                                                <input type="radio" id="fotosP" name="categoryP2" disabled/>
+                                                                <input type="radio" id="fotosP"  disabled/>
                                                                 <label for="fotosP"><img src="imagenes/camera_button.png" alt="Like" width="20" height="20" href="#Fotos" id="3" value="3"></label>
                                                             </li>
                                                             <%}%>
 
                                                             <% if (category ==4) { %>
                                                             <li  >
-                                                                <input  type="radio" id="videosP" name="categoryP2" checked="checked" disabled/>
+                                                                <input  type="radio" id="videosP"  checked="checked" disabled/>
                                                                 <label   for="videosP"><img  src="imagenes/video_button.png" alt="Like" width="20" height="20" href="#Videos" id="4" value="4"></label>
                                                             </li>
                                                             <%}else{%> 
                                                             <li>
-                                                                <input type="radio" id="videosP" name="categoryP2" disabled/>
+                                                                <input type="radio" id="videosP" disabled/>
                                                                 <label for="videosP"><img src="imagenes/video_button.png" alt="Like" width="20" height="20" href="#Videos" id="4" value="4"></label>
                                                             </li>
                                                             <%}%>
@@ -608,13 +602,13 @@
                                                            <% if(category ==5) { %>
 
                                                             <li  >
-                                                                <input  type="radio" id="archivosP" name="categoryP2" checked="checked" disabled/>
+                                                                <input  type="radio" id="archivosP" checked="checked" disabled/>
                                                                 <label   for="archivosP"><img  src="imagenes/folder_button.png" alt="Like" width="20" height="20" href="#Archivos" id="5" value="5"></label>
                                                             </li>
                                                             <%}else{%> 
 
                                                             <li>
-                                                                <input type="radio" id="archivosP" name="categoryP2"  disabled/>
+                                                                <input type="radio" id="archivosP"   disabled/>
                                                                 <label for="archivosP"><img src="imagenes/folder_button.png" alt="Like" width="20" height="20" href="#Archivos" id="5" value="5"></label>
                                                             </li>
                                                             <%}%>
@@ -633,6 +627,7 @@
                                     <!--Card publication 1 comment -->
                                     <div class="card-body">
                                         <p class="card-text"><%= publication.Content  %></p>
+                                        <%//if(publication.Content)%>
                                         <img src="" alt="Thumbnail" class="center">
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="btn-group">
@@ -651,7 +646,10 @@
                             </div>
                             <!---->
                             <% } %>
+                            
+                            
                             <!--PAGINATION -->
+                            
                             <nav class="blog-pagination center">
                                 <button class="btn btn-outline-primary" href="#">1</button>
                                 <button class="btn btn-outline-primary" href="#">2</button>
@@ -665,6 +663,9 @@
                                 <button class="btn btn-outline-primary" href="#">10</button>
 
                             </nav>
+                            
+                            
+                            
 
 
                         </div> 

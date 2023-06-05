@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class Conexion {
 
-    final static String MyUrl = "jdbc:mysql://localhost:3306/mydatabase", MyRoot = "root", MyPassword = "Maag201200.";
+    final static String MyUrl = "jdbc:mysql://localhost:3306/mydatabase", MyRoot = "root", MyPassword = "lolcats23";
 
     private static Connection Connect() throws ClassNotFoundException, SQLException {
 
@@ -31,7 +31,7 @@ public class Conexion {
         try (Connection conn = Connect()) {
 
             PreparedStatement stm = conn.prepareStatement("Update tbl_user SET Id_Status = " + 2 + " where Id_User= " + UserID);
- stm.executeUpdate();
+            stm.executeUpdate();
         }
 
     }
@@ -66,9 +66,6 @@ public class Conexion {
 
     }
 
-    
-    
-  
     public static String GetCategoria(String Publicacion) throws ClassNotFoundException, SQLException {
 
         try (Connection conn = Connect()) {
@@ -84,16 +81,32 @@ public class Conexion {
         return null;
 
     }
-     
-    public static   List<Publicacion> ReadPublication(int Multi,String Where) throws ClassNotFoundException, SQLException{
-          List<Publicacion> publications = new ArrayList<>();
-        
+
+    public static int GetPagination() throws ClassNotFoundException, SQLException {
+
         try (Connection conn = Connect()) {
-         PreparedStatement stm = conn.prepareStatement("Select * from tbl_publicacion "+Where+" Limit "+ Multi*10+",10");
-         
-                 
+
+            PreparedStatement stm = conn.prepareStatement("SELECT CEIL(COUNT(*) / 10) AS total_pages FROM tbl_publicacion;");
             ResultSet rs = stm.executeQuery();
-     
+            if (rs.next()) {
+
+                return rs.getInt("total_pages");
+
+            }
+
+        }
+
+        return 0;
+
+    }
+
+    public static List<Publicacion> ReadPublication(int Multi, String Where) throws ClassNotFoundException, SQLException {
+        List<Publicacion> publications = new ArrayList<>();
+
+        try (Connection conn = Connect()) {
+            PreparedStatement stm = conn.prepareStatement("Select * from tbl_publicacion " + Where + " Limit " + Multi * 10 + ",10");
+
+            ResultSet rs = stm.executeQuery();
 
             while (rs.next()) {
 
@@ -131,12 +144,11 @@ public class Conexion {
         String This = "";
 
         if (Like != null) {
- if (Like != "") {
-            This = " AND Contenido LIKE '%" + Like + "%' or Titulo LIKE '%" + Like+"%'";
- }
+            if (Like != "") {
+                This = " AND Contenido LIKE '%" + Like + "%' or Titulo LIKE '%" + Like + "%'";
+            }
         }
 
-    
         if (Game != null) {
             In += Game;
         }
@@ -157,7 +169,7 @@ public class Conexion {
             }
         }
         if (File != null) {
-            if (In !="") {
+            if (In != "") {
                 In += "," + File;
             } else {
 
@@ -170,17 +182,16 @@ public class Conexion {
             } else {
 
                 In += Conv;
-            }   
+            }
         }
-     
-      
-            if (!"".equals(FechaB)) {
 
-                  if (In=="") {
-         Between +="And";   
-            
-        }
-            Between = " DatePublic >= '" + FechaB+"'";
+        if (!"".equals(FechaB)) {
+
+            if (In == "") {
+                Between += "And";
+
+            }
+            Between = " DatePublic >= '" + FechaB + "'";
 
         }
         if (!"".equals(FechaA)) {
@@ -190,14 +201,10 @@ public class Conexion {
 
             }
 
-            Between += " DatePublic <= '" + FechaA+"'";
+            Between += " DatePublic <= '" + FechaA + "'";
 
         }
-        
-        
-        
-        
-        
+
         if (In != "") {
             In = " And Id_Cat IN (" + In + ")";
             if (Between != "") {
@@ -208,10 +215,10 @@ public class Conexion {
         Where += In + Between + This;
 
         try (Connection conn = Connect()) {
-            
-            String Command="Select * from tbl_publicacion " + Where + " Limit " + Multi * 10 + ",10";
-             System.out.println(Command);
-         PreparedStatement stm = conn.prepareStatement(Command);
+
+            String Command = "Select * from tbl_publicacion " + Where + " Limit " + Multi * 10 + ",10";
+            System.out.println(Command);
+            PreparedStatement stm = conn.prepareStatement(Command);
             ResultSet rs = stm.executeQuery();
             int i = 0;
 
