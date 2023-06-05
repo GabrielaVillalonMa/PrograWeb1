@@ -329,7 +329,7 @@
             <%
                List<Publicacion> publications = new ArrayList<>();
                publications = (List<Publicacion>) request.getAttribute("publicaciones");
-   
+   int category=0;
 
             %>
 
@@ -552,26 +552,27 @@
                                                 <div class="container">
                                                     <div class="row justify-content-center">
                                                         <ul class="category" >
+<% category = publication.Categoria;%>
+                                                           
+                                                         <% if (category==1) { %>
+                                                            <li  >
 
-                                                         <% if (publication.Categoria==1) { %>
-                                                            <li> 
-
-                                                                <input class="selected" type="radio" id="discusionP" name="categoryP2" checked disabled/>
+                                                                <input  type="radio" id="discusionP" name="categoryP2" checked="checked" disabled/>
                                                                 <label for="discusionP"><img  src="imagenes/write_button.png" alt="Like" width="20" height="20" href="#Discusion" id="1" value="1"></label>
 
                                                             </li>
                                                             <%}else{%>                    
                                                             <li> 
 
-                                                                <input type="radio" id="discusionP" name="categoryP2" checked disabled/>
+                                                                <input type="radio" id="discusionP" name="categoryP2"  disabled/>
                                                                 <label for="discusionP"><img  src="imagenes/write_button.png" alt="Like" width="20" height="20" href="#Discusion" id="1" value="1"></label>
 
                                                             </li>
                                                             <%}%>
-                                                            <% if (publication.Categoria==2) { %>
-                                                            <li>
-                                                                <input class="selected"  type="radio" id="videojuegosP" name="categoryP2" disabled/>
-                                                                <label for="videojuegosP"><img src="imagenes/control_button.png" alt="Like" width="20" height="20"  href="#VideoJuegos" id="2" value="2"></label>
+                                                            <% if(category==2) { %>
+                                                            <li class="selected">
+                                                                <input   type="radio" id="videojuegosP" name="categoryP2" checked="checked" disabled/>
+                                                                <label   for="videojuegosP"><img src="imagenes/control_button.png" alt="Like" width="20" height="20"  href="#VideoJuegos" id="2" value="2"></label>
                                                             </li>
                                                             <%}else{%> 
                                                             <li>
@@ -580,10 +581,10 @@
                                                             </li>
                                                             <%}%>
 
-                                                          <% if (publication.Categoria==3) { %>
-                                                            <li>
-                                                                <input class="selected" type="radio" id="fotosP" name="categoryP2" disabled/>
-                                                                <label for="fotosP"><img src="imagenes/camera_button.png" alt="Like" width="20" height="20" href="#Fotos" id="3" value="3"></label>
+                                                          <% if (category==3) { %>
+                                                            <li >
+                                                                <input type="radio" id="fotosP" name="categoryP2" checked="checked" disabled/>
+                                                                <label   for="fotosP"><img src="imagenes/camera_button.png" alt="Like" width="20" height="20" href="#Fotos" id="3" value="3"></label>
                                                             </li>
                                                             <%}else{%> 
                                                             <li>
@@ -592,10 +593,10 @@
                                                             </li>
                                                             <%}%>
 
-                                                            <% if (publication.Categoria ==4) { %>
-                                                            <li>
-                                                                <input class="selected" type="radio" id="videosP" name="categoryP2" disabled/>
-                                                                <label for="videosP"><img  src="imagenes/video_button.png" alt="Like" width="20" height="20" href="#Videos" id="4" value="4"></label>
+                                                            <% if (category ==4) { %>
+                                                            <li  >
+                                                                <input  type="radio" id="videosP" name="categoryP2" checked="checked" disabled/>
+                                                                <label   for="videosP"><img  src="imagenes/video_button.png" alt="Like" width="20" height="20" href="#Videos" id="4" value="4"></label>
                                                             </li>
                                                             <%}else{%> 
                                                             <li>
@@ -604,16 +605,16 @@
                                                             </li>
                                                             <%}%>
 
-                                                           <% if (publication.Categoria ==5) { %>
+                                                           <% if(category ==5) { %>
 
-                                                            <li>
-                                                                <input class="selected" type="radio" id="archivosP" name="categoryP2" checked="checked" disabled/>
-                                                                <label for="archivosP"><img  src="imagenes/folder_button.png" alt="Like" width="20" height="20" href="#Archivos" id="5" value="5"></label>
+                                                            <li  >
+                                                                <input  type="radio" id="archivosP" name="categoryP2" checked="checked" disabled/>
+                                                                <label   for="archivosP"><img  src="imagenes/folder_button.png" alt="Like" width="20" height="20" href="#Archivos" id="5" value="5"></label>
                                                             </li>
                                                             <%}else{%> 
 
                                                             <li>
-                                                                <input type="radio" id="archivosP" name="categoryP2" checked="checked" disabled/>
+                                                                <input type="radio" id="archivosP" name="categoryP2"  disabled/>
                                                                 <label for="archivosP"><img src="imagenes/folder_button.png" alt="Like" width="20" height="20" href="#Archivos" id="5" value="5"></label>
                                                             </li>
                                                             <%}%>

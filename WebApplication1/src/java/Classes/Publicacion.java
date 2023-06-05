@@ -25,7 +25,7 @@ public class Publicacion {
         this.Media = Media;
         this.DatePublic = DatePublic;
         this.Deleted = Deleted;
-        this. Categoria = 1;
+        this.Categoria = 1;
     }
     
     public Publicacion(ResultSet rs) throws SQLException, ClassNotFoundException {
