@@ -12,7 +12,8 @@ import java.util.Base64;
  * @author Marco A Aguirre G
  */
 public class Publicacion {
-    public String IdPublicacion,Title,Content,Media,DatePublic,Categoria;
+    public String IdPublicacion,Title,Content,Media,DatePublic;
+    public int Categoria;
     public User Dueno;
     public boolean Deleted;
 
@@ -24,7 +25,7 @@ public class Publicacion {
         this.Media = Media;
         this.DatePublic = DatePublic;
         this.Deleted = Deleted;
-        this. Categoria = Categoria;
+        this. Categoria = 1;
     }
     
     public Publicacion(ResultSet rs) throws SQLException, ClassNotFoundException {
@@ -38,7 +39,8 @@ public class Publicacion {
        
         this.DatePublic = rs.getString("Id_Post");
         this.Deleted = rs.getBoolean("deleted");
-        this.Categoria = Conexion.GetCategoria(IdPublicacion);
+        this.Categoria =rs.getInt("Id_Cat");
+        System.out.println("La categoria es ="+ Categoria);
     }
     
     

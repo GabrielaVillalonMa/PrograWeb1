@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class Conexion {
 
-    final static String MyUrl = "jdbc:mysql://localhost:3306/mydatabase", MyRoot = "root", MyPassword = "lolcats23";
+    final static String MyUrl = "jdbc:mysql://localhost:3306/mydatabase", MyRoot = "root", MyPassword = "Maag201200.";
 
     private static Connection Connect() throws ClassNotFoundException, SQLException {
 
