@@ -452,18 +452,18 @@
                             <!-- Publicar-->
                             <div class="container-card">
                                 <div class="card mb-4 box-shadow" >
-
+                                    <form action="CrearPubli" method="post">
 
                                     <!-- Card Upper -->
                                     <div class="container-md align-items-center" >
                                         <div class="row">
                                             <div class="col-sm-2" >
-                                                <form action="PerfilPropioVacio.jsp" method="get">
+                                                
 
-                                                    <button class="btn">
+                                                    <button action="PerfilPropioVacio.jsp"class="btn">
                                                         <img  src="data:image/jpeg;base64, <%= session.getAttribute("ImageData") %>"  class="round_img" c lass="a_center" alt="Profile Picture" width="72" height="72"  >
                                                     </button>
-                                                </form>
+                                                
                                             </div>
 
                                             <div class="col-md-10">
@@ -472,7 +472,7 @@
                                                 <div class="container">
                                                     <div class="row justify-content-center">
 
-
+                                                            
                                                         <ul class="category">
                                                             <li>
                                                                 <input type="radio" id="Pdiscusion" name="CatInput" value="1" />
@@ -507,7 +507,7 @@
                                     </div>
 
                                     <!--input buttons -->
-                                    <form action="CrearPubli" method="post">
+                                   
                                         <div class="form-group">
                                             <!-- <label for="comment">Comment:</label> -->
                                             <textarea class="form-control" rows="5" placeholder="Write a bit?" id="comment" name="Pcontenido"></textarea>
